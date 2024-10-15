@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ACDS.RevBill.Entities\ACDS.RevBill.Entities.csproj" />
+    <ProjectReference Include="..\ACDS.RevBill.Shared\ACDS.RevBill.Shared.csproj" />
+  </ItemGroup>
+</Project>

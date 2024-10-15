@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet" />
+  <title>Update Password</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-size: 3px;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .container {
+      padding-top: 7.5rem;
+      width: 50%;
+      /* margin-top: ; */
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 1.3rem;
+      padding: 2rem;
+      /* margin-top: 7rem; */
+    }
+
+    .logo {
+      width: 234px;
+      height: 84px;
+    }
+
+    .body {
+      margin-top: 3rem;
+    }
+
+    .heading {
+      color: #1c3d5a;
+      font-weight: 600;
+      font-size: 1.8rem;
+      line-height: 3.8rem;
+    }
+
+    .email-body {
+      padding-top: 1.5rem;
+    }
+
+    p {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 2.4rem;
+    }
+
+    .email-footer {
+      text-align: right;
+    }
+
+    @media only screen and (max-width: 500px) {
+      .container {
+        padding-top: 2rem;
+        width: 80%;
+        /* margin-top: ; */
+        margin: 0 auto;
+        background-color: #ffffff;
+        border-radius: 1.3rem;
+        padding: 1.5rem;
+        /* margin-top: 10rem; */
+
+      }
+
+      .logo {
+        width: 120px;
+        height: 44px;
+      }
+
+      .body {
+        margin-top: 0.5rem;
+      }
+
+      .heading {
+        font-size: 1.2rem;
+        line-height: 1.4rem;
+      }
+
+      .email-body {
+        padding-top: 1rem;
+      }
+
+      p {
+        font-size: 0.8rem;
+        line-height: 1.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <img src="https://drive.google.com/uc?id=11pa6BYZbWve58Zzazr_GXB6fURMUHlBP" class="logo" alt="revbill" />
+    </header>
+    <main class="body">
+      <h2 class="heading">Welcome, [organisation]</h2>
+      <section class="email-body">
+        <p>
+          Thanks for signing up to Revbill.
+        </p>
+        <p>
+          Your request for Onboarding is currently undergoing further processing.
+        </p>
+        <p>
+          If you have any questions, feel free to
+          <a href="mailto:{{support_email}}">email our customer service team</a>.
+        </p>
+      </section>
+      <br />
+      <section class="email-footer">
+        <p>Sincerely,</p>
+        <p>Revbill Team</p>
+      </section>
+    </main>
+  </div>
+</body>
+
+</html>

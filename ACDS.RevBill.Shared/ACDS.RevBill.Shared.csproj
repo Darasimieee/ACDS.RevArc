@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="DataTransferObjects\" />
+    <None Remove="RequestFeatures\" />
+    <None Remove="DataTransferObjects\User\" />
+    <None Remove="DataTransferObjects\Role\" />
+    <None Remove="DataTransferObjects\Auth\" />
+    <None Remove="DataTransferObjects\Customer\" />
+    <None Remove="DataTransferObjects\Enumeration\" />
+    <None Remove="DataTransferObjects\Enumeration\Property\" />
+    <None Remove="DataTransferObjects\Enumeration\Space Identifier\" />
+    <None Remove="DataTransferObjects\Enumeration\Business Type\" />
+    <None Remove="DataTransferObjects\Enumeration\Business Size\" />
+    <None Remove="DataTransferObjects\Enumeration\Ward\" />
+    <None Remove="DataTransferObjects\Billing\" />
+    <None Remove="DataTransferObjects\Enumeration\Payer Identification\" />
+    <None Remove="DataTransferObjects\Payment\" />
+    <None Remove="DataTransferObjects\Reporting\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="RequestFeatures\" />
+    <Folder Include="DataTransferObjects\User\" />
+    <Folder Include="DataTransferObjects\Role\" />
+    <Folder Include="DataTransferObjects\Auth\" />
+    <Folder Include="DataTransferObjects\Customer\" />
+    <Folder Include="DataTransferObjects\Enumeration\Payer Identification\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ACDS.RevBill.Entities\ACDS.RevBill.Entities.csproj" />
+  </ItemGroup>
+</Project>

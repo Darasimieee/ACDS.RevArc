@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "./static/css/main.a3406c69.css",
+    "main.js": "./static/js/main.e7399b9f.js",
+    "static/media/african-american-woman.png": "./static/media/african-american-woman.4579e0f1b0da18649d76.png",
+    "static/media/african-american-man.png": "./static/media/african-american-man.daab256ac9e3509e1dc8.png",
+    "static/media/building.png": "./static/media/building.b56de88be063577ad664.png",
+    "static/media/phone1.png": "./static/media/phone1.c4841c8a12633e97f464.png",
+    "static/media/bg-login.png": "./static/media/bg-login.a5ad9be47bf9a0253018.png",
+    "static/media/bg-login-dark-mode.png": "./static/media/bg-login-dark-mode.b4a5c65890722647a955.png",
+    "static/media/fa-solid-900.ttf": "./static/media/fa-solid-900.2877d54f94f30c5d563c.ttf",
+    "static/media/coming-soon.jpg": "./static/media/coming-soon.ac5dfb7dafb00038b656.jpg",
+    "static/media/fa-brands-400.ttf": "./static/media/fa-brands-400.13e40630e5866f777de8.ttf",
+    "static/media/fa-solid-900.woff2": "./static/media/fa-solid-900.bdb9e23299f9d1320a8b.woff2",
+    "static/media/cover-sidebar.jpg": "./static/media/cover-sidebar.224612a848216851132c.jpg",
+    "static/media/fa-brands-400.woff2": "./static/media/fa-brands-400.7be2266f1be21c44ecd4.woff2",
+    "static/media/profile-cover.jpg": "./static/media/profile-cover.0dc996541d6102f95d8a.jpg",
+    "static/media/fa-regular-400.ttf": "./static/media/fa-regular-400.146404900f7550a9719d.ttf",
+    "static/media/cover-sidebar-user.jpg": "./static/media/cover-sidebar-user.7519141823faf5388031.jpg",
+    "static/media/error-page-pattern.png": "./static/media/error-page-pattern.2d15e616ccf00e761a77.png",
+    "static/media/fa-regular-400.woff2": "./static/media/fa-regular-400.8bedd7cfa43a6c358cdd.woff2",
+    "static/media/fa-v4compatibility.ttf": "./static/media/fa-v4compatibility.6c0a7b774ffa1cf0a059.ttf",
+    "static/media/fa-v4compatibility.woff2": "./static/media/fa-v4compatibility.497d535001197a9c5b38.woff2",
+    "index.html": "./index.html",
+    "main.a3406c69.css.map": "./static/css/main.a3406c69.css.map",
+    "main.e7399b9f.js.map": "./static/js/main.e7399b9f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a3406c69.css",
+    "static/js/main.e7399b9f.js"
+  ]
+}

@@ -1,0 +1,1427 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ACDS.RevBill.Presentation</name>
+    </assembly>
+    <members>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.AuditController.GetAllLogs(ACDS.RevBill.Shared.RequestFeatures.PaginationFilter)">
+            <summary>
+            Gets the audit logs.
+            </summary>
+            <response code="200">successful</response>
+            <response code="401">unauthorised</response>
+            <response code="500">internal server error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.AuthenticationController.Login(ACDS.RevBill.Shared.DataTransferObjects.LoginRequest)">
+            <summary>
+            Generates JWT token and logins in a user
+            </summary>
+            <response code="200">Token Generated</response>
+            <response code="500">Internal Server Error</response> 
+            <response code="401">Unauthorised</response> 
+            <response code="400">Bad Request</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.AuthenticationController.CustomerRegistration(ACDS.RevBill.Shared.DataTransferObjects.Auth.RegisterRequest)">
+            <summary>
+            Customer Registration
+            </summary>
+            <response code="201">Customer successfully registered</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.AuthenticationController.ForgotPassword(ACDS.RevBill.Shared.DataTransferObjects.Auth.OTPRequest)">
+            <summary>
+            Request a password change
+            </summary>
+            <response code="200">successful</response>
+            <response code="500">internal server error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.AuthenticationController.VerifyForgotPasswordOTP(ACDS.RevBill.Shared.DataTransferObjects.Auth.ValidateOTPRequest)">
+            <summary>
+            Validate an OTP for forgot password request
+            </summary>
+            <response code="200">successful</response>
+            <response code="500">internal server error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.AuthenticationController.UpdatePassword(ACDS.RevBill.Shared.DataTransferObjects.Auth.UpdatePasswordParams)">
+            <summary>
+            Update a password
+            </summary>
+            <response code="200">successful</response>
+            <response code="500">internal server error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.AuthenticationController.ConfirmAccount(ACDS.RevBill.Shared.DataTransferObjects.Auth.ValidateOTPRequest)">
+            <summary>
+            Confirms a newly registered account
+            </summary>
+            <response code="200">successful</response>
+            <response code="500">internal server error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.AuthenticationController.ConfirmAccountOTP(ACDS.RevBill.Shared.DataTransferObjects.Auth.OTPRequest)">
+            <summary>
+            Generate OTP for newly registered account
+            </summary>
+            <response code="200">successful</response>
+            <response code="500">internal server error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.BillingController.GetAllBills(System.Int32,ACDS.RevBill.Shared.RequestFeatures.BillingParameters)">
+            <summary>
+            Gets all bills in an organisation
+            </summary>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.BillingController.GetAllFrequency">
+            <summary>
+            Gets the list of all Frequency
+            </summary>
+            <returns>The Frequency list</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.BillingController.GetBillById(System.Int32,System.Int32)">
+            <summary>
+            Gets a single bill in an organisation
+            </summary>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.BillingController.GetBillByCustomerId(System.Int32,System.Int32,ACDS.RevBill.Shared.RequestFeatures.DefaultParameters)">
+            <summary>
+            Gets all bills for a customer in an organisation
+            </summary>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.BillingController.TotalNoOfBillsGeneratedThisMonth(System.Int32)">
+            <summary>
+            Count of all bills generated this current month
+            </summary>
+            <returns>Count of all bills generated this current month</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.BillingController.TotalNoOfBillsGeneratedThisWeek(System.Int32)">
+            <summary>
+            Count of all bills generated this current week
+            </summary>
+            <returns>Count of all bills generated this current week</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.BillingController.TotalNoOfBillsGeneratedToday(System.Int32)">
+            <summary>
+            Count of all bills generated today
+            </summary>
+            <returns>Count of all bills generated today</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.BillingController.TotalAmountOfMoneyGeneratedOnBillsThisMonth(System.Int32)">
+            <summary>
+            Total amount of money generated on bills this current month
+            </summary>
+            <returns>Total amoout of money generated on bills this current month</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.BillingController.TotalAmountOfMoneyGeneratedOnBillsThisWeek(System.Int32)">
+            <summary>
+            Total amount of money generated on bills this current week
+            </summary>
+            <returns>Total amoout of money generated on bills this current week</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.BillingController.TotalAmountOfMoneyGeneratedOnBillsToday(System.Int32)">
+            <summary>
+            Total amount of money generated on bills today
+            </summary>
+            <returns>Total amoout of money generated on bills today</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.BillingController.GenerateBillForPropertyAfterEnumeration(System.Int32,System.Int32,System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Billing.CreateBulkProperty)">
+            <summary>
+            Generate bill for property after enumeration
+            </summary>
+            <returns>Generated Bill</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.BillingController.GenerateBillForNonProperty(System.Int32,System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Billing.CreateBulkNonProperty)">
+            <summary>
+            Generate bill for non-property 
+            </summary>
+            <returns>Generated Bill</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.BillingController.GenerateBacklogBill(System.Int32,System.Int32,System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Billing.CreateBulkBacklogBill)">
+            <summary>
+            Generate backlog bill for property 
+            </summary>
+            <returns>Generated Bill</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.BillingController.BulkBilling(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Billing.CreateBulkBillingDto)">
+            <summary>
+            Bill bulk upload
+            </summary>
+            <returns>Generated Bills</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.BillingController.AutoBilling(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Billing.CreateAutoBill)">
+            <summary>
+            Auto Bill-Generation 
+            </summary>
+            <returns>Generated Bills</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.BillingController.ValidateBillReference(ACDS.RevBill.Shared.DataTransferObjects.Billing.ValidateBillRequest1Dto)">
+            <summary>
+            Validate bill reference
+            </summary>
+            <returns>Status of bill reference</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.BillingController.ValidateHarmonizedBillReference(ACDS.RevBill.Shared.DataTransferObjects.Billing.HarmonizedBillReferenceRequestDto)">
+            <summary>
+            Validate harmonized bill reference
+            </summary>
+            <returns>Status of bill reference</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.BillingController.CountAndAmountByAreaOffice(System.Int32)">
+            <summary>
+            Count and amount of all generated bills by agency
+            </summary>
+            <returns>Count and amount of all generated bills by agency</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.BillingController.CreateBillFormat(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Billing.CreateBillFormat)">
+            <summary>
+            Create Bill Format
+            </summary>
+            <returns>Generated Bill Format</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.BillingController.UpdateBillFormat(System.Int32,System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Billing.UpdateBillFormat)">
+            <summary>
+            Update Bill Format
+            </summary>
+            <returns>Generated Bill Format</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.BillingController.GetBillFormat(System.Int32,System.Int32)">
+            <summary>
+            Get Bill Format
+            </summary>
+            <returns>Generated Bill Format</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.BillingController.GenerateBillReport(System.Int32,System.Int64)">
+            <summary>
+            Generate Bill
+            </summary>
+            <returns>Generated Bill Format</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.CustomerController.GetCustomers(System.Int32,ACDS.RevBill.Shared.RequestFeatures.CustomerParameters)">
+            <summary>
+            Gets the list of all customers
+            </summary>
+            <returns>The customers list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.CustomerController.GetCustomer(System.Int32,System.Int32)">
+            <summary>
+            Gets a specific customer using their id
+            </summary>
+            <returns>The customer</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.CustomerController.GetCustomerByEmail(System.String)">
+            <summary>
+            Gets a specific customer using their email
+            </summary>
+            <returns>The customer</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.CustomerController.CreateCustomerWithoutProperty(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Customer.CreateCustomerDto)">
+            <summary>
+            Creates a new customer without a property
+            </summary>
+            <returns>Successful customer creation</returns>
+            <response code="201">Customer Successfully Created</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.CustomerController.UpdateCustomer(System.Int32,System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Customer.UpdateCustomerDto)">
+            <summary>
+            Updates a specific customer using their id
+            </summary>
+            <response code="204">Successfully Updated Customer</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EmailAccountController.GetEmailAccounts(ACDS.RevBill.Shared.RequestFeatures.RoleParameters)">
+            <summary>
+            Gets the list of all EmailAccounts
+            </summary>
+            <returns>The EmailAccounts list</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EmailAccountController.GetEmailAccount(System.Int32)">
+            <summary>
+            Gets a specific EmailAccount using their id
+            </summary>
+            <returns>The EmailAccount</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EmailAccountController.CreateEmailAccount(ACDS.RevBill.Shared.DataTransferObjects.CreateEmailAccountDto)">
+            <summary>
+            Creates a new EmailAccount
+            </summary>
+            <returns>Successful EmailAccount creation</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EmailAccountController.UpdateEmailAccount(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.UpdateEmailAccountDto)">
+            <summary>
+            Updates a specific EmailAccount using their id
+            </summary>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EmailAccountController.GetEmailAccountTemplates(System.Int32,ACDS.RevBill.Shared.RequestFeatures.RoleParameters)">
+            <summary>
+            Gets the list of all EmailAccount's EmailTemplate by EmailAccountId
+            </summary>
+            <returns>The EmailAccount's EmailTemplates list</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EmailAccountController.GetEmailTemplate(System.Int32,System.Int32)">
+            <summary>
+            Gets a specific EmailTemplate using their emailTemplateId and emailAccountId
+            </summary>
+            <returns>The EmailTemplate</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EmailAccountController.CreateEmailTemplate(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.CreateEmailTemplateDto)">
+            <summary>
+            Creates a new EmailTemplate
+            </summary>
+            <returns>Successful EmailTemplate creation</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EmailAccountController.UpdateEmailTemplate(System.Int32,System.Int32,ACDS.RevBill.Shared.DataTransferObjects.UpdateEmailTemplateDto)">
+            <summary>
+            Updates a specific EmailTemplate using their id
+            </summary>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.GetGenders">
+            <summary>
+            Gets the list of all genders
+            </summary>
+            <returns>The genders list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.GetTitles">
+            <summary>
+            Gets the list of all titles
+            </summary>
+            <returns>The titles list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.GetMaritalStatuses">
+            <summary>
+            Gets the list of all marital statuses
+            </summary>
+            <returns>The marital status list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.GetPayerTypes">
+            <summary>
+            Gets the list of all payer types
+            </summary>
+            <returns>The payer types list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.GetLgasByState(System.Int32)">
+            <summary>
+            Gets the list of all lgas by state
+            </summary>
+            <returns>The LGAs list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.GetLcdasByLga(System.Int32)">
+            <summary>
+            Gets all lcdas under an Lga
+            </summary>
+            <returns>The LCDAs list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.GetStates">
+            <summary>
+            Gets the list of all states
+            </summary>
+            <returns>The States list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.GetCountries">
+            <summary>
+            Gets the list of all countries
+            </summary>
+            <returns>The Countries list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.GetProperties(System.Int32,ACDS.RevBill.Shared.RequestFeatures.PropertyParameters)">
+            <summary>
+            Gets the list of all Properties
+            </summary>
+            <returns>The Properties list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.GetProperty(System.Int32,System.Int32)">
+            <summary>
+            Gets a specific Property using their id
+            </summary>
+            <returns>The Property</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.CreateProperty(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Enumeration.CreatePropertyDto)">
+            <summary>
+            Creates a new Property
+            </summary>
+            <returns>Property Successfully Created</returns>
+            <response code="201">Property Successfully Created</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.UpdateProperty(System.Int32,System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Enumeration.PropertyUpdateDto)">
+            <summary>
+            Updates a specific property using their id
+            </summary>
+            <response code="204">Successfully Updated Property</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.GetAllWards(System.Int32)">
+            <summary>
+            Gets the list of all wards
+            </summary>
+            <returns>The wards list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.GetWard(System.Int32,System.Int32)">
+            <summary>
+            Get ward by Id
+            </summary>
+            <returns>The ward</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.CreateWard(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Enumeration.CreateWardDto)">
+            <summary>
+            Create ward 
+            </summary>
+            <returns>Created ward</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.UpdateWard(System.Int32,System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Enumeration.UpdateWardDto)">
+            <summary>
+            Updates a ward using their id
+            </summary>
+            <response code="200">Successfully Updated ward</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.GetAllSpaceIdentifiers(System.Int32)">
+            <summary>
+            Gets the list of all space identifiers
+            </summary>
+            <returns>The space identifiers list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.GetSpaceIdentifiers(System.Int32,System.Int32)">
+            <summary>
+            Gets space identifier
+            </summary>
+            <returns>The space identifier</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.CreateSpaceIdentifier(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Enumeration.CreateSpaceIdentifierDto)">
+            <summary>
+            Create Space Identifier
+            </summary>
+            <returns>Created space identifier</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.UpdateSpaceIdentifier(System.Int32,System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Enumeration.UpdateSpaceIdentifierDto)">
+            <summary>
+            Updates a Space Identifier using their id
+            </summary>
+            <response code="200">Successfully Updated ward</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.GetAllBusinessTypes(System.Int32)">
+            <summary>
+            Gets the list of all business types
+            </summary>
+            <returns>The business types list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.GetBusinessType(System.Int32,System.Int32)">
+            <summary>
+            Gets business type by id
+            </summary>
+            <returns>The business type</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.CreateBusinessType(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Enumeration.BusinessType.CreateBusinessTypeDto)">
+            <summary>
+            Create Business Type
+            </summary>
+            <returns>Created business type</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.UpdateBusinessType(System.Int32,System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Enumeration.BusinessType.UpdateBusinessTypeDto)">
+            <summary>
+            Updates a business type using their id
+            </summary>
+            <response code="200">Successfully Updated ward</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.GetAllBusinessSizes(System.Int32)">
+            <summary>
+            Gets the list of all business sizes
+            </summary>
+            <returns>The business sizes list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.GetBusinessSize(System.Int32,System.Int32)">
+            <summary>
+            Gets business size by id
+            </summary>
+            <returns>The business type</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.CreateBusinessSize(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Enumeration.BusinessSize.CreateBusinessSizeDto)">
+            <summary>
+            Create Business Size
+            </summary>
+            <returns>Created business size</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.UpdateBusinessSize(System.Int32,System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Enumeration.BusinessSize.UpdateBusinessSizeDto)">
+            <summary>
+            Updates a business size using their id
+            </summary>
+            <response code="200">Successfully Updated ward</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.GetAllBusinessProfiles(System.Int32,ACDS.RevBill.Shared.RequestFeatures.DefaultParameters)">
+            <summary>
+            Gets the list of all business profiles
+            </summary>
+            <returns>The business profiles list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.GetBusinessProfile(System.Int32,System.Int32)">
+            <summary>
+            Gets business profile by id
+            </summary>
+            <returns>The business profile</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.Enumeration(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Enumeration.CompleteEnumerationParams)">
+            <summary>
+            Complete Enumeration Process, from Property to Customer
+            </summary>
+            <returns>Successfully Enumerated</returns>
+            <response code="200">Property Successfully Created</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.PartialEnumeration(System.Int32,System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Enumeration.PartialEnumerationParams)">
+            <summary>
+            Partial Enumeration Process, from Business profile to Customer
+            </summary>
+            <returns>Successfully Enumerated</returns>
+            <response code="200">Property Successfully Created</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.SearchForPayerIDByPhoneNumber(ACDS.RevBill.Shared.DataTransferObjects.Enumeration.GetTaxPayerRequestDto)">
+            <summary>
+            Search for payer id by phone number
+            </summary>
+            <returns>Enumeration status</returns>
+            <response code="200">Returned payer id details</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.SearchForPayerIDByName(ACDS.RevBill.Shared.DataTransferObjects.Enumeration.GetTaxPayerRequestDto)">
+            <summary>
+            Search for payer id by name
+            </summary>
+            <returns>Enumeration status</returns>
+            <response code="200">Returned payer id details</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.SearchForPayerIDByEmail(ACDS.RevBill.Shared.DataTransferObjects.Enumeration.GetTaxPayerRequestDto)">
+            <summary>
+            Search for payer id by email
+            </summary>
+            <returns>Enumeration status</returns>
+            <response code="200">Returned payer id details</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.VerifyPid(ACDS.RevBill.Shared.DataTransferObjects.Enumeration.PayerIdEnumerationDto)">
+            <summary>
+            Verify Payer Id
+            </summary>
+            <returns>Status if PID exists</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.CustomerEnumerationByNIN(ACDS.RevBill.Shared.DataTransferObjects.Enumeration.CustomerEnumerationNINDto)">
+            <summary>
+            Customer enumeration by NIN
+            </summary>
+            <returns>Generated PID</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.CustomerEnumerationByBVN(ACDS.RevBill.Shared.DataTransferObjects.Enumeration.CustomerEnumerationBVNDto)">
+            <summary>
+            Customer enumeration by BVN
+            </summary>
+            <returns>Generated PID</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.CustomerEnumerationWithoutBVNOrNIN(ACDS.RevBill.Shared.DataTransferObjects.Enumeration.CustomerEnumerationDto)">
+            <summary>
+            Customer enumeration by BioData
+            </summary>
+            <returns>Generated PID</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.CorporatePayerIDCreation(ACDS.RevBill.Shared.DataTransferObjects.Enumeration.CorporatePayerIDRequest)">
+            <summary>
+            Corporate PayerID Creation
+            </summary>
+            <returns>Generated PID</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.GetAgencies(ACDS.RevBill.Shared.RequestFeatures.RoleParameters)">
+            <summary>
+            Gets the list of all agencies 
+            </summary>
+            <returns>The agency list</returns>
+            /// <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.GetOrganiisationsAgency(System.Int32,ACDS.RevBill.Shared.RequestFeatures.RoleParameters)">
+            <summary>
+            Gets a specific Agencies in an organisation using organisationid 
+            </summary>
+            <returns>The Agency</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.GetAgency(System.Int32)">
+            <summary>
+            Gets a specific Agency using their id 
+            </summary>
+            <returns>The Agency</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.UpdateAgency(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.AgencyUpdateDto)">
+            <summary>
+            Updates a specific Agency using their id
+            </summary>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.CreateAgency(ACDS.RevBill.Shared.DataTransferObjects.AgencyCreationDto)">
+            <summary>
+            Agency Creation 
+            </summary>
+            <returns>Status if agency is created</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.PropertyCountThisMonth(System.Int32)">
+            <summary>
+            Count of all registered properties this current month
+            </summary>
+            <returns>Count of all registered properties this current month</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.PropertyCountThisWeek(System.Int32)">
+            <summary>
+            Count of all registered properties this current week
+            </summary>
+            <returns>Count of all registered properties this current week</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.PropertyCountToday(System.Int32)">
+            <summary>
+            Count of all registered properties today
+            </summary>
+            <returns>Count of all registered properties today</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.NonPropertyCountThisMonth(System.Int32)">
+            <summary>
+            Count of all registered non-properties this current month
+            </summary>
+            <returns>Count of all registered non-properties this current month</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.NonPropertyCountThisWeek(System.Int32)">
+            <summary>
+            Count of all registered non-properties this current week
+            </summary>
+            <returns>Count of all registered non-properties this current week</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.NonPropertyCountToday(System.Int32)">
+            <summary>
+            Count of all registered non-properties today
+            </summary>
+            <returns>Count of all registered non-properties today</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.CustomerCountThisMonth(System.Int32)">
+            <summary>
+            Count of all registered customers this current month
+            </summary>
+            <returns>Count of all registered customers this current month</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.CustomerCountThisWeek(System.Int32)">
+            <summary>
+            Count of all registered customers this current week
+            </summary>
+            <returns>Count of all registered customerss this current week</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.CustomerCountToday(System.Int32)">
+            <summary>
+            Count of all registered customers today
+            </summary>
+            <returns>Count of all registered customers today</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.CustomerAndPropertyCountByAreaOffice(System.Int32)">
+            <summary>
+            Count of all registered customers and properties by agency
+            </summary>
+            <returns>Count of all registered customers and properties by agency</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.EnumerationManifest(System.Int32,ACDS.RevBill.Shared.RequestFeatures.PaginationFilter)">
+            <summary>
+            Enumeration manifest
+            </summary>
+            <returns>Enumeration manifest</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.EnumerationManifestByID(System.Int32,System.Int32)">
+            <summary>
+            Enumeration manifest by ID
+            </summary>
+            <returns>Enumeration manifest</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.RemoveCustomerFromProperty(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Remove Customer from property
+            </summary>
+            <returns>Customer removed from property</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.EnumerationController.GetCustomerProperties(System.Int32,System.Int32,ACDS.RevBill.Shared.RequestFeatures.DefaultParameters)">
+            <summary>
+            Gets the list of all customer properties
+            </summary>
+            <returns>The customer properties list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.ModuleController.GetModules(ACDS.RevBill.Shared.RequestFeatures.RoleParameters)">
+            <summary>
+            Gets the list of all Modules
+            </summary>
+            <returns>The Modules list</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.ModuleController.GetModule(System.Int32)">
+            <summary>
+            Gets a specific Module using their id
+            </summary>
+            <returns>The Module</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.ModuleController.CreateModule(ACDS.RevBill.Shared.DataTransferObjects.CreateModuleDto)">
+            <summary>
+            Creates a new Module
+            </summary>
+            <returns>Successful Module creation</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.ModuleController.UpdateModule(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.UpdateModuleDto)">
+            <summary>
+            Updates a specific Module using their id
+            </summary>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.ModuleController.GetModuleMenus(System.Int32,ACDS.RevBill.Shared.RequestFeatures.RoleParameters)">
+            <summary>
+            Gets the list of all Module menus by moduleId
+            </summary>
+            <returns>The Module's Menu list</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.ModuleController.GetMenu(System.Int32,System.Int32)">
+            <summary>
+            Gets a specific Menu using their id and ModuleId
+            </summary>
+            <returns>The Menu</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.ModuleController.CreateModuleMenu(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.CreateMenuDto)">
+            <summary>
+            Creates a new Menu
+            </summary>
+            <returns>Successful Menu creation</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.ModuleController.UpdateMenu(System.Int32,System.Int32,ACDS.RevBill.Shared.DataTransferObjects.UpdateMenuDto)">
+            <summary>
+            Updates a specific Menu using their id
+            </summary>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.ModuleController.GetOrganisationModules(System.Int32,ACDS.RevBill.Shared.RequestFeatures.RoleParameters)">
+            <summary>
+            Gets the list of all Module in an organisation by OrganisationId
+            </summary>
+            <returns>The Organisation's Module list</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.ModuleController.GetOrganisationModule(System.Int32,System.Int32)">
+            <summary>
+            Gets a specific Module using their id and OrganisationId
+            </summary>
+            <returns>The Organisation</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.ModuleController.CreateOrganisationModule(System.Int32,System.Collections.Generic.List{ACDS.RevBill.Shared.DataTransferObjects.CreateOrganisationModuleDto})">
+            <summary>
+            Creates a new organisationmodule
+            </summary>
+            <returns>Successful organisationmodule creation</returns>
+            <response code="200">Successful</response>
+            
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.ModuleController.GetRoleModules(System.Int32,ACDS.RevBill.Shared.RequestFeatures.RoleParameters)">
+            <summary>
+            Gets the list of all Module in and Role by moduleId
+            </summary>
+            <returns>The Role's Module list</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.ModuleController.GetRoleModule(System.Int32,System.Int32)">
+            <summary>
+            Gets a specific RoleModule using their id and RoleModuleId
+            </summary>
+            <returns>The RoleModule</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.ModuleController.CreateOrganisationRoleModule(System.Int32,System.Collections.Generic.List{ACDS.RevBill.Shared.DataTransferObjects.CreateRoleModuleDto})">
+            <summary>
+            Creates a new rolemodule
+            </summary>
+            <returns>Successful rolemodule creation</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.ModuleController.UpdateRolemodule(System.Int32,System.Int32,ACDS.RevBill.Shared.DataTransferObjects.UpdateRoleModuleDto)">
+            <summary>
+            Updates a specific rolemodule using their id
+            </summary>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.OrganisationController.GetOrganisations(ACDS.RevBill.Shared.RequestFeatures.DefaultParameters)">
+            <summary>
+            Gets the list of all Organisations
+            </summary>
+            <returns>The Organisations list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.OrganisationController.GetOrganisation(System.Int32)">
+            <summary>
+            Gets a specific Organisation using their id
+            </summary>
+            <returns>The Organisation</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.OrganisationController.CreateOrganisation(ACDS.RevBill.Shared.DataTransferObjects.CreateOrganisationDto)">
+            <summary>
+            Creates a new Organisation
+            </summary>
+            <returns>Organisation Successfully Created</returns>
+            <response code="201">Organisation Successfully Created</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.OrganisationController.UpdateOrganisation(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.UpdateOrganisationDto)">
+            <summary>
+            Updates a specific Organisation using their id
+            </summary>
+            <response code="204">Successfully Updated Organisation</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.OrganisationController.ApprovedOnboardingRequests">
+            <summary>
+            Gets the list of all approved onboarding requests
+            </summary>
+            <returns>The Organisations list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.OrganisationController.RejectedOnboardingRequests">
+            <summary>
+            Gets the list of all unapproved onboarding requests
+            </summary>
+            <returns>The Organisations list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.OrganisationController.PendingOnboardingRequests">
+            <summary>
+            Gets the list of all pending onboarding requests
+            </summary>
+            <returns>The Organisations list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.OrganisationController.ApproveOnboardingRequest(System.Int32)">
+            <summary>
+            Approve onboarding requests from an organisation
+            </summary>
+            <returns>The Organisations list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.OrganisationController.RejectOnboardingRequest(System.Int32)">
+            <summary>
+            Reject onboarding requests from an organisation
+            </summary>
+            <returns>The Organisations list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.OrganisationController.DeactivateOrganisation(System.Int32)">
+            <summary>
+            Deactivates an organisation
+            </summary>
+            <returns>Organisation successfully deactivated</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.OrganisationController.ActivateOrganisation(System.Int32)">
+            <summary>
+            Activates an organisation
+            </summary>
+            <returns>Organisation successfully activated</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.OrganisationController.GetOrganisationTenants(ACDS.RevBill.Shared.RequestFeatures.DefaultParameters)">
+            <summary>
+            Gets the list of all Organisation Tenants
+            </summary>
+            <returns>The Organisations tenants list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.OrganisationController.GetOrganisationTenant(System.Int32)">
+            <summary>
+            Gets a specific Organisation Tenant using their id
+            </summary>
+            <returns>The Organisation</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.OrganisationController.UpdateOrganisationTenant(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.UpdateTenancyDto)">
+            <summary>
+            Updates an organisation tenant
+            </summary>
+            <returns>Updated organisation tenant</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.PaymentController.GetPaymentHistory(System.Int32,ACDS.RevBill.Shared.RequestFeatures.PaymentParameters)">
+            <summary>
+            Gets Payment History
+            </summary>
+            <returns>The payment history list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.PaymentController.GetPaymentHistoryById(System.Int32,System.Int32)">
+            <summary>
+            Get payment history by id
+            </summary>
+            <returns>The payment made</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.PaymentController.AddPaymentHistory(System.Int32,System.Int32,System.Int64,ACDS.RevBill.Shared.DataTransferObjects.Payment.CreatePaymentDto)">
+            <summary>
+            Add payment record
+            </summary>
+            <returns>The payment made</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.PaymentController.GetAllPaymentGateways(ACDS.RevBill.Shared.RequestFeatures.DefaultParameters)">
+            <summary>
+            Gets all payment gateways
+            </summary>
+            <returns>The payment gateways list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.PaymentController.GetPaymentGateway(System.Int32)">
+            <summary>
+            Get payment gateway by id
+            </summary>
+            <returns>The payment banks list by id</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.PaymentController.CreatePaymentGateway(ACDS.RevBill.Shared.DataTransferObjects.Payment.CreatePaymentGatewayDto)">
+            <summary>
+            Add payment gateways 
+            </summary>
+            <returns>Created payment gateway</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.PaymentController.UpdatePaymentGateway(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Payment.UpdatePaymentGatewayDto)">
+            <summary>
+            Update payment gateways 
+            </summary>
+            <returns>Created payment gateway</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.PaymentController.GetAllOrganisationPaymentGateways(System.Int32,ACDS.RevBill.Shared.RequestFeatures.DefaultParameters)">
+            <summary>
+            Gets all organisation payment gateways
+            </summary>
+            <returns>The payment gateways list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.PaymentController.GetOrganisationPaymentGateway(System.Int32,System.Int32)">
+            <summary>
+            Gets all organisation payment gateways by id
+            </summary>
+            <returns>The payment gateways list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.PaymentController.AddOrganisationPaymentGateway(System.Int32,System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Payment.CreateOrganisationPaymentGatewayDto)">
+            <summary>
+            Add payment gateway to organisation
+            </summary>
+            <returns>The payment gateway</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.PaymentController.UpdateOrganisationPaymentGateway(System.Int32,System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Payment.UpdateOrganisationPaymentGatewayDto)">
+            <summary>
+            Update payment gateway for organisation
+            </summary>
+            <returns>The payment gateway</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RevenueController.GetRevenues(ACDS.RevBill.Shared.RequestFeatures.RoleParameters)">
+            <summary>
+            Gets the list of all revenues 
+            </summary>
+            <returns>The revenue list</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RevenueController.GetOrganisationsRevenues(System.Int32,ACDS.RevBill.Shared.RequestFeatures.RoleParameters)">
+            <summary>
+            Gets a specific Revenues using organisation id 
+            </summary>
+            <returns>The Revenues</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RevenueController.GetRevenuesBybusinessType(System.Int32,System.Int32,ACDS.RevBill.Shared.RequestFeatures.RoleParameters)">
+            <summary>
+            Gets a specific Revenues using the businessTypeId 
+            </summary>
+            <returns>The Revenues</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RevenueController.GetRevenues(System.Int32)">
+            <summary>
+            Gets a specific Revenues using their id 
+            </summary>
+            <returns>The Revenues</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RevenueController.UpdateRevenue(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.RevenueUpdateDto)">
+            <summary>
+            Updates a specific Revenue using their id
+            </summary>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RevenueController.CreateRevenue(ACDS.RevBill.Shared.DataTransferObjects.RevenueCreationDto)">
+            <summary>
+            Revenue Creation 
+            </summary>
+            <returns>Status if revenue is created</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RevenueController.CreateCategory(ACDS.RevBill.Shared.DataTransferObjects.CategoryCreationDto)">
+            <summary>
+            Category Creation 
+            </summary>
+            <returns>Status if Category is created</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RevenueController.GetCategory(ACDS.RevBill.Shared.RequestFeatures.RoleParameters)">
+            <summary>
+            Gets the list of all categories 
+            </summary>
+            <returns>The categories list</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RevenueController.GetOrganisationsCategories(System.Int32,ACDS.RevBill.Shared.RequestFeatures.RoleParameters)">
+            <summary>
+            Gets a specific categories using organisation id 
+            </summary>
+            <returns>The categories</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RevenueController.GetCategory(System.Int32)">
+            <summary>
+            Gets a specific category using their id 
+            </summary>
+            <returns>The categories</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RevenueController.GetCategoryByBusinessSize(System.Int32,System.Int32)">
+            <summary>
+            Gets a specific categories using their BusinessSizeId
+            </summary>
+            <returns>The categories</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RevenueController.UpdateCategory(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.CategoryUpdateDto)">
+            <summary>
+            Updates a specific category using their id
+            </summary>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RevenueController.CreateRevenueCategory(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Revenues.RevenueCategories.RevenueCategoryCreationDto)">
+            <summary>
+            RevenueCategory Creation 
+            </summary>
+            <returns>Status if RevenueCategory is created</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RevenueController.GetRevenueCategory(ACDS.RevBill.Shared.RequestFeatures.RoleParameters)">
+            <summary>
+            Gets the list of all Revenuecategories 
+            </summary>
+            <returns>The Revenuecategories list</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RevenueController.GetOrganisationsRevenueCategories(System.Int32,ACDS.RevBill.Shared.RequestFeatures.RoleParameters)">
+            <summary>
+            Gets a specific Revenuecategories using organisation id 
+            </summary>
+            <returns>The Revenuecategories</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RevenueController.GetRevenueCategory(System.Int32)">
+            <summary>
+            Gets a specific Revenuecategories using their id 
+            </summary>
+            <returns>The Revenuecategories</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RevenueController.UpdateRevenueCategoory(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Revenues.RevenueCategories.RevenueCategoryUpdateDto)">
+            <summary>
+            Updates a specific Revenuecategory using their id
+            </summary>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RevenueController.CreateRevenuePrice(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Revenues.RevenuePrices.RevenuePricesCreationDto)">
+            <summary>
+            RevenuePrice Creation 
+            </summary>
+            <returns>Status if RevenuePrice is created</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RevenueController.GetRevenuePrices(ACDS.RevBill.Shared.RequestFeatures.RoleParameters)">
+            <summary>
+            Gets the list of all RevenuePrices 
+            </summary>
+            <returns>The RevenuePrices list</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RevenueController.GetOrganisationsRevenuePrices(System.Int32,ACDS.RevBill.Shared.RequestFeatures.RoleParameters)">
+            <summary>
+            Gets a specific RevenuePrices using organisation id 
+            </summary>
+            <returns>The RevenuePrices</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RevenueController.GetRevenuePriceCategory(System.Int32)">
+            <summary>
+            Gets a specific RevenuePrice using their id 
+            </summary>
+            <returns>The RevenuePrice</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RevenueController.UpdateRevenuePrice(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.Revenues.RevenuePrices.RevenuePricesUpdateDto)">
+            <summary>
+            Updates a specific RevenuePrices using their id
+            </summary>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RolesController.GetRoles(ACDS.RevBill.Shared.RequestFeatures.RoleParameters)">
+            <summary>
+            Gets the list of all roles
+            </summary>
+            <returns>The roles list</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RolesController.GetRole(System.Int32)">
+            <summary>
+            Gets a specific role using their id
+            </summary>
+            <returns>The role</returns>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RolesController.CreateRole(ACDS.RevBill.Shared.DataTransferObjects.RoleForCreationDto)">
+            <summary>
+            Creates a new role
+            </summary>
+            <returns>Successful role creation</returns>
+            <response code="201">Role Successfully Created</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.RolesController.UpdateRole(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.RoleForUpdateDto)">
+            <summary>
+            Updates a specific role using their id
+            </summary>
+            <response code="204">Successfully Updated Role</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.SmsAccountController.GetSmsAccounts(ACDS.RevBill.Shared.RequestFeatures.RoleParameters)">
+            <summary>
+            Gets the list of all SmsAccounts
+            </summary>
+            <returns>The SmsAccounts list</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.SmsAccountController.GetSmsAccount(System.Int32)">
+            <summary>
+            Gets a specific SmsAccount using their id
+            </summary>
+            <returns>The SmsAccount</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.SmsAccountController.CreateSmsAccount(ACDS.RevBill.Shared.DataTransferObjects.SmsAccount.CreateSmsAccountDto)">
+            <summary>
+            Creates a new SmsAccount
+            </summary>
+            <returns>Successful SmsAccount creation</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.SmsAccountController.UpdateSmsAccount(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.SmsAccount.UpdateSmsAccountDto)">
+            <summary>
+            Updates a specific SmsAccount using their id
+            </summary>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.SmsAccountController.GetSmsAccountTemplates(System.Int32,ACDS.RevBill.Shared.RequestFeatures.RoleParameters)">
+            <summary>
+            Gets the list of all SmsAccount's SmsTemplate by SmsAccountId
+            </summary>
+            <returns>The SmsAccount's SmsTemplates list</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.SmsAccountController.GetSmsTemplate(System.Int32,System.Int32)">
+            <summary>
+            Gets a specific SmsTemplate using their smsTemplateId and smsAccountId
+            </summary>
+            <returns>The SmsTemplate</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.SmsAccountController.CreateSmsTemplate(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.SmsAccount.CreateSmsTemplateDto)">
+            <summary>
+            Creates a new SmsTemplate
+            </summary>
+            <returns>Successful SmsTemplate creation</returns>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.SmsAccountController.UpdateSmsTemplate(System.Int32,System.Int32,ACDS.RevBill.Shared.DataTransferObjects.SmsAccount.UpdateSmsTemplateDto)">
+            <summary>
+            Updates a specific SmsTemplate using their id
+            </summary>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.TransactionReportBuilderController.TotalPropertyCount(System.Int32)">
+            <summary>
+            Total Property Count
+            </summary>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.TransactionReportBuilderController.TotalNonPropertyCount(System.Int32)">
+            <summary>
+            Total Non Property Count
+            </summary>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.TransactionReportBuilderController.TotalCustomerCount(System.Int32)">
+            <summary>
+            Total Customer Count
+            </summary>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:ACDS.RevBill.Presentation.Controllers.TransactionReportBuilderController.AgencyYearlyCollection(ACDS.RevBill.Shared.DataTransferObjects.Reporting.Agency.AgencyYearlyCollectionRequest)" -->
+        <!-- Badly formed XML comment ignored for member "M:ACDS.RevBill.Presentation.Controllers.TransactionReportBuilderController.CollectionByBank(ACDS.RevBill.Shared.DataTransferObjects.Reporting.BankCollectionRequest)" -->
+        <member name="M:ACDS.RevBill.Presentation.Controllers.TransactionReportBuilderController.AgencyQuarterlyCollection(ACDS.RevBill.Shared.DataTransferObjects.Reporting.Agency.AgencyQuarterlyCollectionRequest)">
+            <summary>
+            Revenue Collecting Banks
+            </summary>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:ACDS.RevBill.Presentation.Controllers.TransactionReportBuilderController.CollectionBanks" -->
+        <member name="M:ACDS.RevBill.Presentation.Controllers.TransactionReportBuilderController.AgencyBiAnnualCollection(ACDS.RevBill.Shared.DataTransferObjects.Reporting.Agency.AgencyBiAnnualCollectionRequest)">
+            <summary>
+            Agency Collection By Revenue
+            </summary>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.UserController.GetUsersForOrganisation(System.Int32,ACDS.RevBill.Shared.RequestFeatures.DefaultParameters)">
+            <summary>
+            Gets all users in an organisation
+            </summary>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.UserController.GetUsersForOrganisation(System.Int32,System.Int32)">
+            <summary>
+            Gets a single user in an organisation
+            </summary>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.UserController.CreateUsersForOrganisation(System.Int32,ACDS.RevBill.Shared.DataTransferObjects.User.UserRequestParams)">
+            <summary>
+            creates a user for an organisation
+            </summary>
+            <response code="201">User Successfully Created</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.UserController.UpdateUserRole(System.Int32,System.Int32,ACDS.RevBill.Shared.DataTransferObjects.User.UserUpdateDto)">
+            <summary>
+            Updates a user using their id
+            </summary>
+            <response code="204">Successfully Updated User Profile</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.UserController.GetUserProfilesForOrganisations(System.Int32,ACDS.RevBill.Shared.RequestFeatures.PaginationFilter)">
+            <summary>
+            Gets all user profiles in an organisation
+            </summary>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.UserController.GetUserProfileForOrganisation(System.Int32,System.Int32)">
+            <summary>
+            Gets a single user profile in an organisation
+            </summary>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.UserController.UpdateUserRole(System.Int32,System.Int32,ACDS.RevBill.Shared.DataTransferObjects.User.UserProfileUpdateDto)">
+            <summary>
+            Updates the profile of a user using their id
+            </summary>
+            <response code="204">Successfully Updated User Profile</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.UserController.GetAllUserRolesForOrganisation(System.Int32,ACDS.RevBill.Shared.RequestFeatures.DefaultParameters)">
+            <summary>
+            Gets all user roles in an organisation
+            </summary>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.UserController.GetUserRoleForOrganisation(System.Int32,System.Int32)">
+            <summary>
+            Gets a single user role in an organisation
+            </summary>
+            <response code="200">Successful</response>
+            <response code="500">Internal Server Error</response>
+            <response code="404">Error Not Found</response>
+        </member>
+        <member name="M:ACDS.RevBill.Presentation.Controllers.UserController.UpdateUserRole(System.Int32,System.Int32,ACDS.RevBill.Shared.DataTransferObjects.User.UserRoleUpdateDto)">
+            <summary>
+            Updates the role of a user using their id
+            </summary>
+            <response code="204">Successfully Updated User Role</response>
+            <response code="500">Internal Server Error</response> 
+        </member>
+    </members>
+</doc>
