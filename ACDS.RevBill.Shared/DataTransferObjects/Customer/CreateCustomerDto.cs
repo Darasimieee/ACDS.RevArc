@@ -11,8 +11,8 @@ namespace ACDS.RevBill.Shared.DataTransferObjects.Customer
         [Required(ErrorMessage = "PayerId is a required field.")]
         public string? PayerId { get; set; }
 
-        [Required(ErrorMessage = "TitleId is a required field.")]
-        public int TitleId { get; set; }
+        //[Required(ErrorMessage = "TitleId is a required field.")]
+        public int? TitleId { get; set; }
 
         public string? CorporateName { get; set; }
 

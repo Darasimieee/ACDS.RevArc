@@ -27,7 +27,10 @@ namespace ACDS.RevBill.Helpers
         private readonly string _baseUrl = "https://services.ebs-rcm.com/prCallProcfctrs.asmx/prDBConnect";
         private readonly PID _pidConfig;
         private readonly string _operation = "PostTring";
-
+        public JsonModelService(PID pidConfig)
+        {
+            _pidConfig=pidConfig;
+        }
         /// <summary>
         /// Calls soap base web service in Asynchronously
         /// </summary>
@@ -151,13 +154,12 @@ namespace ACDS.RevBill.Helpers
         }
         public IEnumerable<VerifyPidResponseDto> VerifyPayerId(PayerIdEnumerationDto verifyPid)
         {
-            DataSet JsonFileName = QueryProcessor($"{_owner}.dbo.prgetname '{verifyPid.PayerId}'");
-            string json = JsonConvert.SerializeObject(JsonFileName, Newtonsoft.Json.Formatting.Indented);
+            DataSet jsonFileName = QueryProcessor($"{_owner}.dbo.prgetname '{verifyPid.PayerId}'");
+            string json = JsonConvert.SerializeObject(jsonFileName, Newtonsoft.Json.Formatting.Indented);
 
             if (json.Length <= 2)
             {
-                List<VerifyPidResponseDto> emptyModel = new List<VerifyPidResponseDto>();
-                return emptyModel;
+                return new List<VerifyPidResponseDto>();
             }
 
             var project = (JObject)JsonConvert.DeserializeObject(json);
@@ -165,9 +167,23 @@ namespace ACDS.RevBill.Helpers
 
             var models = outputData.ToObject<List<VerifyPidResponseDto>>();
 
+            foreach (var model in models)
+            {
+                
+                bool isCorporate = !string.IsNullOrEmpty(model.CorporateName);
+
+                if (!string.IsNullOrEmpty(model.FullName) && !isCorporate)
+                {
+                    var names = model.FullName.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                    model.SurName = names.Length > 0 ? names[0] : string.Empty;
+                    model.FirstName = names.Length > 1 ? names[1] : string.Empty;
+                    model.MiddleName = names.Length > 2 ? names[2] : string.Empty;
+                }
+            }
+
             return models;
         }
-        public async Task<PIDResponse> CreatePIDWithBioData(CustomerEnumerationDto pidEntity)
+            public async Task<PIDResponse> CreatePIDWithBioData(CustomerEnumerationDto pidEntity)
         {
             var pidCreationUrl = $"{_pidConfig.BASE_URL}/Interface/pidcreation";
             var pidCreationHash = EncryptionUtility.CreateSHA512(_pidConfig.KEY + pidEntity.Phone + pidEntity.Email + pidEntity.Address + _pidConfig.STATE);

@@ -256,7 +256,7 @@ namespace ACDS.RevBill.Services
 
                 //send activation email to user
                 MailRequest mailRequest = new MailRequest();
-                mailRequest.Subject = "RevBill Account Activation";
+                mailRequest.Subject = "RevAc Account Activation";
                 mailRequest.ToEmail = userCreationDto.Email;
                 mailRequest.Password = Password;
                 mailRequest.OTP = otp;
@@ -269,7 +269,7 @@ namespace ACDS.RevBill.Services
                 //send sms for otp
                 MessageQueue messageQueue = new MessageQueue();
                 messageQueue.Phone = model.PhoneNumber;
-                messageQueue.Message = $"Kindly confirm your Revbill account - {model.Email} using this OTP - {otp}. It is valid for one day.";
+                messageQueue.Message = $"Kindly confirm your RevAc account - {model.Email} using this OTP - {otp}. It is valid for one day.";
 
                 //response message
                 dataResponse.StatusMessage = "Customer successfully registered";

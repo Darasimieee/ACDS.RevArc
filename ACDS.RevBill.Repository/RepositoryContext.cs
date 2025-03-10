@@ -18,22 +18,16 @@ namespace ACDS.RevBill.Repository
             _httpContextAccessor = httpContextAccessor;
             _tenantId = _httpContextAccessor.HttpContext?.User.Claims
                 .FirstOrDefault(claim => claim.Type == "TenantId")?.Value;
-            _connectionString = _httpContextAccessor.HttpContext?.User.Claims
-              .FirstOrDefault(claim => claim.Type == "ConnectionString")?.Value;
+            //_connectionString = _httpContextAccessor.HttpContext?.User.Claims
+            //  .FirstOrDefault(claim => claim.Type == "ConnectionString")?.Value;
 
-            if (_connectionString is not null)
-            {
-                Database.SetConnectionString(_connectionString);
-            }
-
-            else
-            {                
+                          
                 var configuration = new ConfigurationBuilder()
                .AddJsonFile("appsettings.json", false)
                .Build();
 
                 Database.SetConnectionString(configuration.GetConnectionString("sqlConnection"));
-            }      
+                   
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -98,6 +92,7 @@ namespace ACDS.RevBill.Repository
         public DbSet<BusinessProfile>? BusinessProfiles { get; set; }
         public DbSet<AuditTrail>? AuditTrail { get; set; }
         public DbSet<Billing>? Billing { get; set; }
+        public DbSet<BillPreApproval>? BillPreApproval { get; set; }
         public DbSet<CustomerProperty>? CustomerProperties { get; set; }
         public DbSet<Tenancy>? Tenancy { get; set; }
         public DbSet<Payment>? Payments { get; set; }
@@ -105,6 +100,8 @@ namespace ACDS.RevBill.Repository
         public DbSet<OrganisationBanks>? OrganisationBanks { get; set; }
         public DbSet<HeadRevenue>? HeadRevenue { get; set; }
         public DbSet<BillFormat>? BillFormats { get; set; }
+        public DbSet<Arrears>? Arrears { get; set; }
+        public DbSet<OrganisationCustomers>? OrganisationCustomers { get; set; }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {

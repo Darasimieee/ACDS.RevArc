@@ -1,0 +1,39 @@
+D:\RevAc\ACDS.RevBill.Entities\bin\Debug\net7.0\ACDS.RevBill.Entities.deps.json
+D:\RevAc\ACDS.RevBill.Entities\bin\Debug\net7.0\ACDS.RevBill.Entities.dll
+D:\RevAc\ACDS.RevBill.Entities\bin\Debug\net7.0\ACDS.RevBill.Entities.pdb
+D:\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ACDS.RevBill.Entities.csproj.AssemblyReference.cache
+D:\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ACDS.RevBill.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ACDS.RevBill.Entities.AssemblyInfoInputs.cache
+D:\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ACDS.RevBill.Entities.AssemblyInfo.cs
+D:\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ACDS.RevBill.Entities.csproj.CoreCompileInputs.cache
+D:\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ACDS.RevBill.Entities.sourcelink.json
+D:\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ACDS.RevBill.Entities.dll
+D:\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\refint\ACDS.RevBill.Entities.dll
+D:\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ACDS.RevBill.Entities.pdb
+D:\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ref\ACDS.RevBill.Entities.dll
+D:\New folder (3)\RevAc\ACDS.RevBill.Entities\bin\Debug\net7.0\ACDS.RevBill.Entities.deps.json
+D:\New folder (3)\RevAc\ACDS.RevBill.Entities\bin\Debug\net7.0\ACDS.RevBill.Entities.dll
+D:\New folder (3)\RevAc\ACDS.RevBill.Entities\bin\Debug\net7.0\ACDS.RevBill.Entities.pdb
+D:\New folder (3)\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ACDS.RevBill.Entities.csproj.AssemblyReference.cache
+D:\New folder (3)\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ACDS.RevBill.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\New folder (3)\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ACDS.RevBill.Entities.AssemblyInfoInputs.cache
+D:\New folder (3)\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ACDS.RevBill.Entities.AssemblyInfo.cs
+D:\New folder (3)\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ACDS.RevBill.Entities.csproj.CoreCompileInputs.cache
+D:\New folder (3)\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ACDS.RevBill.Entities.sourcelink.json
+D:\New folder (3)\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ACDS.RevBill.Entities.dll
+D:\New folder (3)\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\refint\ACDS.RevBill.Entities.dll
+D:\New folder (3)\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ACDS.RevBill.Entities.pdb
+D:\New folder (3)\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ref\ACDS.RevBill.Entities.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Entities\bin\Debug\net7.0\ACDS.RevBill.Entities.deps.json
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Entities\bin\Debug\net7.0\ACDS.RevBill.Entities.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Entities\bin\Debug\net7.0\ACDS.RevBill.Entities.pdb
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ACDS.RevBill.Entities.csproj.AssemblyReference.cache
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ACDS.RevBill.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ACDS.RevBill.Entities.AssemblyInfoInputs.cache
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ACDS.RevBill.Entities.AssemblyInfo.cs
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ACDS.RevBill.Entities.csproj.CoreCompileInputs.cache
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ACDS.RevBill.Entities.sourcelink.json
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ACDS.RevBill.Entities.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\refint\ACDS.RevBill.Entities.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ACDS.RevBill.Entities.pdb
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Entities\obj\Debug\net7.0\ref\ACDS.RevBill.Entities.dll

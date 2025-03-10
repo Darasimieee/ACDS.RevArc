@@ -1,10 +1,11 @@
 ﻿using System;
 namespace ACDS.RevBill.Shared.DataTransferObjects.Billing
 {
-	public class GenerateBillRequest
-	{
+    public class GenerateBillRequest
+    {
         public string? PayerID { get; set; }
         public string? AgencyRef { get; set; }
+        public string? AgencyName { get; set; }
         public string? RevCode { get; set; }
         public decimal Amount { get; set; }
         public string? EntryDate { get; set; }

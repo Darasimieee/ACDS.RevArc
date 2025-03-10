@@ -10,6 +10,7 @@ namespace ACDS.RevBill.Shared.DataTransferObjects.Billing
         public string PropertyName { get; set; }
 
         public string CategoryName { get; set; }
+        public string CorporateName { get; set; }
         
         public string PropertyAddress { get; set; }
         public string FirstName { get; set; }

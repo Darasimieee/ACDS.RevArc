@@ -36,11 +36,20 @@ namespace ACDS.RevBill.Presentation.Controllers
         [HttpGet("{organisationId:int}")]
         public async Task<IActionResult> GetAllBills(int organisationId, [FromQuery] BillingParameters requestParameters)
         {
-            var pagedResult = await _service.BillingService.GetAllBillsAsync(organisationId, requestParameters, trackChanges: false);
+            try
+            {
+                var pagedResult = await _service.BillingService.GetAllBillsAsync(organisationId, requestParameters, trackChanges: false);
 
-            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(pagedResult.metaData));
+                Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(pagedResult.metaData));
 
-            return Ok(pagedResult.bills);
+                return Ok(pagedResult.bills);
+            }
+            catch (Exception ex) 
+            { 
+            
+            }
+
+            return Ok();
         }
         /// <summary>
         /// Gets all bills in an organisation by agency Id
@@ -50,7 +59,7 @@ namespace ACDS.RevBill.Presentation.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet("{organisationId:int}/agency/{agencyId:int}")]
-        public async Task<IActionResult> GetAgencyBills(int organisationId,int agencyId , [FromQuery] BillingParameters requestParameters)
+        public async Task<IActionResult> GetAgencyBills(int organisationId, int agencyId, [FromQuery] BillingParameters requestParameters)
         {
             var pagedResult = await _service.BillingService.GetAgencyBillsAsync(organisationId, agencyId, requestParameters, trackChanges: false);
 
@@ -66,9 +75,9 @@ namespace ACDS.RevBill.Presentation.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet("{organisationId:int}/agency/{agencyId:int}/payer/{payerId}")]
-        public async Task<IActionResult> GetPayerIdBills(int organisationId, int agencyId,string payerId, [FromQuery] BillingParameters requestParameters)
+        public async Task<IActionResult> GetPayerIdBills(int organisationId, int agencyId, string payerId, [FromQuery] BillingParameters requestParameters)
         {
-            var pagedResult = await _service.BillingService.GetPayerBillsAsync(organisationId, agencyId,payerId, requestParameters, trackChanges: false);
+            var pagedResult = await _service.BillingService.GetPayerBillsAsync(organisationId, agencyId, payerId, requestParameters, trackChanges: false);
 
             Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(pagedResult.metaData));
 
@@ -146,7 +155,7 @@ namespace ACDS.RevBill.Presentation.Controllers
         {
             var pagedResult = await _service.BillingService.BillByCustomerIdHarmonisedIdAsync(organisationId, customerId, harmonisedbillref);
 
-            
+
 
             return Ok(pagedResult);
         }
@@ -161,7 +170,7 @@ namespace ACDS.RevBill.Presentation.Controllers
         {
             var pagedResult = await _service.BillingService.GenerateBillReport(organisationId, harmonisedbillref);
 
-            
+
 
             return Ok(pagedResult);
         }
@@ -316,14 +325,14 @@ namespace ACDS.RevBill.Presentation.Controllers
         [HttpPost("{organisationId:int}/generate-bill/property/{propertyId:int}/customer/{customerId:int}")]
         public async Task<IActionResult> GenerateBillForPropertyAfterEnumeration(int organisationId, int propertyId, int customerId, [FromBody] CreateBulkPropertyBill createBill)
         {
-            if (createBill.CreatePropertyBillDto.Count==0)
+            if (createBill.CreatePropertyBillDto.Count == 0)
                 return BadRequest("CreateBillDto object is null");
             if (!ModelState.IsValid)
                 return UnprocessableEntity(ModelState);
 
             var generateBill = await _service.BillingService.CreatePropertyBillAsync(organisationId, propertyId, customerId, createBill, trackChanges: false);
 
-           
+
             return Ok(generateBill);
         }
 
@@ -340,7 +349,7 @@ namespace ACDS.RevBill.Presentation.Controllers
         {
             if (createBill is null)
                 return BadRequest("CreateBillDto object is null");
-             
+
             if (!ModelState.IsValid)
                 return UnprocessableEntity(ModelState);
 
@@ -349,11 +358,11 @@ namespace ACDS.RevBill.Presentation.Controllers
             return Ok(new
             {
                 message = ("Bill generated sucessfully")
-                
-        });
-            
+
+            });
+
         }
-       
+
         /// <summary>
         /// Generate backlog bill for property 
         /// </summary>
@@ -403,7 +412,7 @@ namespace ACDS.RevBill.Presentation.Controllers
                 message = ("Bill generated sucessfully")
             });
         }
-       
+
         /// <summary>
         /// Auto Bill-Generation 
         /// </summary>
@@ -446,7 +455,7 @@ namespace ACDS.RevBill.Presentation.Controllers
             if (!ModelState.IsValid)
                 return UnprocessableEntity(ModelState);
 
-            var validation =  await _service.BillingService.ValidateBill(validateBill);
+            var validation = await _service.BillingService.ValidateBill(validateBill);
 
             return Ok(validation);
         }
@@ -530,7 +539,7 @@ namespace ACDS.RevBill.Presentation.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpPost("{organisationId:int}/property/{propertyId:int}/customer/{customerId:int}/update-bill")]
-        public async Task<IActionResult> UpdateBill(int organisationId,int propertyId, int customerId, [FromBody] UpdatePropertyBill updateBill)
+        public async Task<IActionResult> UpdateBill(int organisationId, int propertyId, int customerId, [FromBody] UpdatePropertyBill updateBill)
         {
             if (updateBill is null)
                 return BadRequest("UpdatePropertyBillDto  object is null");
@@ -544,8 +553,106 @@ namespace ACDS.RevBill.Presentation.Controllers
             return Ok(bill);
         }
         /// <summary>
+        /// Create ArrearSetting
+        /// </summary>
+        // <returns>Set Arrears<turns>
+        /// <response code="200">Successful</response>
+        /// <response code="500">Internal Server Error</response> 
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [HttpPost("{organisationId:int}/ArrearSetting")]
+        public async Task<IActionResult> CreateArrearSetting(int organisationId, [FromBody] CreateArrearsDTO createArrearsDTO)
+
+        {
+            var arrears = await _service.BillingService.CreateArrearSetting(organisationId, createArrearsDTO, true);
+
+            return Ok(arrears);
+        }
+        /// <summary>
         /// Get All Bill Formats
         /// </summary>
+        /// <response code="200">Successful</response>
+        /// <response code="500">Internal Server Error</response> 
+        /// 
+
+        /// <summary>
+        /// Get All ArrearsSetting By organisationId
+        /// </summary>
+        // <returns>All ArrearsSettings By organisationId <turns>
+        /// <response code="200">Successful</response>
+        /// <response code="500">Internal Server Error</response> 
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [HttpGet("{organisationId:int}/GetArrearSettings")]
+        public async Task<IActionResult> GetArrearSetting(int organisationId, [FromQuery] RoleParameters roleParameters)
+        {
+            var arrearsWithmeta = await _service.BillingService.GetArrearsSetting(organisationId, roleParameters, true);
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(arrearsWithmeta.metaData));
+
+            return Ok(arrearsWithmeta.arrears);
+        }
+
+        /// <summary>
+        /// Update Active ArrearsSetting 
+        /// </summary>
+        // <returns>Update ArrearsSettings  <turns>
+        /// <response code="200">Successful</response>
+        /// <response code="500">Internal Server Error</response> 
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [HttpPost("{arrearId:int}/UpdateArrearSettings")]
+        public async Task<IActionResult> UpdateArrearSetting(int arrearId, [FromBody] UpdateArrearsdto updateArrears)
+        {
+            var arrear = await _service.BillingService.UpdateArrearSettings(arrearId, updateArrears, true);
+
+            return Ok(arrear);
+        }
+
+        /// <summary>
+        /// Initiate StepDown Bill 
+        /// </summary>
+        /// <returns>Initiate StepDown Bill </returns>
+        /// <response code="200">Successful</response>
+        /// <response code="500">Internal Server Error</response> 
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [HttpPost("{organisationId:int}/bill/{billId:int}/initiatestepdown")]
+        public async Task<IActionResult> InitiateBillStepdown(int organisationId, int billId, [FromBody] StepDownBillDto stepdownBill)
+        {
+            if (stepdownBill is null)
+                return BadRequest("StepDownBillDto  object is null");
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
+
+            var bill = await _service.BillingService.InitiateStepDownBill(organisationId, billId, stepdownBill);
+
+            return Ok(bill);
+        }
+
+        /// <summary>
+        /// Approve / Decline requests
+        /// </summary>
+        /// <returns>Approve / Decline requests </returns>
+        /// <response code="200">Successful</response>
+        /// <response code="500">Internal Server Error</response> 
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [HttpPost("{organisationId:int}/approvals")]
+        public async Task<IActionResult> ApproveBill(int organisationId, [FromBody] ApproveRequestDTO stepdownBill)
+        {
+            if (stepdownBill is null)
+                return BadRequest("ApproveRequestDTO object is null");
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
+
+            var bill = await _service.BillingService.ApproveRequest(organisationId, stepdownBill);
+
+            return Ok(bill);
+        }
+        /// <summary>
+        /// Initiate StepDown Bill 
+        /// </summary>
+        /// <returns>Initiate StepDown Bill </returns>
         /// <response code="200">Successful</response>
         /// <response code="500">Internal Server Error</response> 
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -586,7 +693,7 @@ namespace ACDS.RevBill.Presentation.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpGet("{organisationId:int}/bill/{billId:long}/generate-bill")]
-        public async Task<IActionResult> GenerateBillReport(int organisationId, long billId)    
+        public async Task<IActionResult> GenerateBillReport(int organisationId, long billId)
         {
             var bill = await _service.BillingService.GenerateBillReport(organisationId, billId);
 
@@ -610,7 +717,7 @@ namespace ACDS.RevBill.Presentation.Controllers
             var file = Request.Form.Files[0];
             var creator = Request.Form["createdby"];
             var bills = await _service.BillingService.UploadBillsAsync(organisationId, creator, requestParameters, file);
-      
+
             return Ok(bills);
         }
         /// <summary>
@@ -622,7 +729,7 @@ namespace ACDS.RevBill.Presentation.Controllers
         //[ProducesResponseType(StatusCodes.Status200OK)]
         //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpPost("{organisationId:int}/{createdby}/create-bills-previewed")]
-        public async Task<IActionResult> BulkPreviwedBilling(int organisationId,string createdby ,IEnumerable<CreatePropertyBillUpload> bulkBilling)
+        public async Task<IActionResult> BulkPreviwedBilling(int organisationId, string createdby, IEnumerable<CreatePropertyBillUpload> bulkBilling)
         {
             if (bulkBilling is null)
                 return BadRequest("CreateBillDto object is null");

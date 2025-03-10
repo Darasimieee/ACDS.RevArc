@@ -45,6 +45,7 @@ namespace ACDS.RevBill.Repository
         private readonly Lazy<IPropertyRepository> _propertyRepository;
         private readonly Lazy<ISpaceIdentifierRepository> _spaceIdentifierRepository;
         private readonly Lazy<IWardRepository> _wardRepository;
+        private readonly Lazy<IArrearSettingRepository> _arrearsRepository;
         private readonly Lazy<IBusinessTypeRepository> _businessTypeRepository;
         private readonly Lazy<IBusinessSizeRepository> _businessSizeRepository;
         private readonly Lazy<IBusinessProfileRepository> _businessProfileRepository;
@@ -56,18 +57,19 @@ namespace ACDS.RevBill.Repository
         private readonly Lazy<IOrganisationBankRepository> _organisationBankRepository;
         private readonly Lazy<IBillFormatRepository> _billFormatRepository;
         private readonly Lazy<IDebtRepository> _debtRepository;
+        private readonly Lazy<IBillTemRepository> _billTemRepository;
         public RepositoryManager(RepositoryContext repositoryContext)
         {
             _repositoryContext = repositoryContext;
             _roleRepository = new Lazy<IRoleRepository>(() => new RoleRepository(repositoryContext));
             _userRepository = new Lazy<IUsersRepository>(() => new UserRepository(repositoryContext));
             _userRoleRepository = new Lazy<IUserRoleRepository>(() => new UserRoleRepository(repositoryContext));
-            _organisationRepository= new Lazy<IOrganisationRepository>(() => new OrganisationRepository(repositoryContext));
+            _organisationRepository = new Lazy<IOrganisationRepository>(() => new OrganisationRepository(repositoryContext));
             _userProfileRepository = new Lazy<IUserProfileRepository>(() => new UserProfileRepository(repositoryContext));
             _userPasswordRepository = new Lazy<IUserPasswordRepository>(() => new UserPasswordRepository(repositoryContext));
             _customerRepository = new Lazy<ICustomerRepository>(() => new CustomerRepository(repositoryContext));
             _lgaRepository = new Lazy<ILgasRepository>(() => new LgasRepository(repositoryContext));
-            _menusRepository=new Lazy<IMenusRepository>(() => new MenusRepository(repositoryContext));
+            _menusRepository = new Lazy<IMenusRepository>(() => new MenusRepository(repositoryContext));
             _modulesRepository = new Lazy<IModulesRepository>(() => new ModulesRepository(repositoryContext));
             _orgmodulesRepository = new Lazy<IOrganisationModulesRepository>(() => new OrganisationModulesRepository(repositoryContext));
             _orgRoleModulesRepository = new Lazy<IRoleModulesRepository>(() => new RoleModulesRepository(repositoryContext));
@@ -85,7 +87,7 @@ namespace ACDS.RevBill.Repository
             _billingRepository = new Lazy<IBillingRepository>(() => new BillingRepository(repositoryContext));
             _smsTemplateRepository = new Lazy<ISmsTemplateRepository>(() => new SmsTemplateRepository(repositoryContext));
             _smsAccountRepository = new Lazy<ISmsAccountRepository>(() => new SmsAccountRepository(repositoryContext));
-            _passwordHistoryRepository =new Lazy<IPasswordHistoryRepository>(() => new PasswordHistoryRepository(repositoryContext));
+            _passwordHistoryRepository = new Lazy<IPasswordHistoryRepository>(() => new PasswordHistoryRepository(repositoryContext));
             _agencyRepository = new Lazy<IAgencyRepository>(() => new AgencyRepository(repositoryContext));
             _streetRepository = new Lazy<IStreetRepository>(() => new StreetRepository(repositoryContext));
             _revenueRepository = new Lazy<IRevenueRepository>(() => new RevenueRepository(repositoryContext));
@@ -106,6 +108,7 @@ namespace ACDS.RevBill.Repository
             _organisationBankRepository = new Lazy<IOrganisationBankRepository>(() => new OrganisationBankRepository(repositoryContext));
             _billFormatRepository = new Lazy<IBillFormatRepository>(() => new BillFormatRepository(repositoryContext));
             _debtRepository = new Lazy<IDebtRepository>(() => new DebtRepository(repositoryContext));
+            _arrearsRepository = new Lazy<IArrearSettingRepository>(() => new ArrearSettingRepository(repositoryContext));
         }
 
         public IRoleRepository Roles => _roleRepository.Value;
@@ -116,7 +119,7 @@ namespace ACDS.RevBill.Repository
         public IUserPasswordRepository UserPassword => _userPasswordRepository.Value;
         public ICustomerRepository Customer => _customerRepository.Value;
         public ILgasRepository Lgas => _lgaRepository.Value;
-        public IMenusRepository Menus=> _menusRepository.Value;
+        public IMenusRepository Menus => _menusRepository.Value;
         public IModulesRepository Modules => _modulesRepository.Value;
         public IOrganisationModulesRepository OrganisationModules => _orgmodulesRepository.Value;
         public IRoleModulesRepository RoleModules => _orgRoleModulesRepository.Value;
@@ -155,6 +158,8 @@ namespace ACDS.RevBill.Repository
         public IOrganisationBankRepository OrganisationBank => _organisationBankRepository.Value;
         public IBillFormatRepository BillFormat => _billFormatRepository.Value;
         public IDebtRepository debtRepository => _debtRepository.Value;
+        public IBillTemRepository BillPreApproval => _billTemRepository.Value;
+        public IArrearSettingRepository Arrear => _arrearsRepository.Value;
         public async Task SaveAsync() => await _repositoryContext.SaveChangesAsync();
     }
 }

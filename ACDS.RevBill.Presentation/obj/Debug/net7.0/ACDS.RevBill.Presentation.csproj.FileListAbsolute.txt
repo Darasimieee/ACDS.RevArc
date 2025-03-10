@@ -1,0 +1,81 @@
+D:\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Presentation.xml
+D:\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Presentation.deps.json
+D:\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Presentation.dll
+D:\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Presentation.pdb
+D:\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Contracts.dll
+D:\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Entities.dll
+D:\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Helpers.dll
+D:\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Repository.dll
+D:\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Service.Contracts.dll
+D:\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Shared.dll
+D:\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Service.Contracts.pdb
+D:\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Entities.pdb
+D:\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Shared.pdb
+D:\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Helpers.pdb
+D:\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Repository.pdb
+D:\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Contracts.pdb
+D:\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.RevBill.Presentation.csproj.AssemblyReference.cache
+D:\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.RevBill.Presentation.GeneratedMSBuildEditorConfig.editorconfig
+D:\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.RevBill.Presentation.AssemblyInfoInputs.cache
+D:\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.RevBill.Presentation.AssemblyInfo.cs
+D:\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.RevBill.Presentation.csproj.CoreCompileInputs.cache
+D:\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.RevBill.Presentation.sourcelink.json
+D:\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.Rev.07B4E5BF.Up2Date
+D:\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.RevBill.Presentation.dll
+D:\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\refint\ACDS.RevBill.Presentation.dll
+D:\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.RevBill.Presentation.pdb
+D:\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ref\ACDS.RevBill.Presentation.dll
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Presentation.xml
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Presentation.deps.json
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Presentation.dll
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Presentation.pdb
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Contracts.dll
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Entities.dll
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Helpers.dll
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Repository.dll
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Service.Contracts.dll
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Shared.dll
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Service.Contracts.pdb
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Entities.pdb
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Shared.pdb
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Helpers.pdb
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Repository.pdb
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Contracts.pdb
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.RevBill.Presentation.csproj.AssemblyReference.cache
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.RevBill.Presentation.GeneratedMSBuildEditorConfig.editorconfig
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.RevBill.Presentation.AssemblyInfoInputs.cache
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.RevBill.Presentation.AssemblyInfo.cs
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.RevBill.Presentation.csproj.CoreCompileInputs.cache
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.RevBill.Presentation.sourcelink.json
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.Rev.07B4E5BF.Up2Date
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.RevBill.Presentation.dll
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\refint\ACDS.RevBill.Presentation.dll
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.RevBill.Presentation.pdb
+D:\New folder (3)\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ref\ACDS.RevBill.Presentation.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Presentation.xml
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Presentation.deps.json
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Presentation.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Presentation.pdb
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Contracts.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Entities.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Helpers.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Repository.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Service.Contracts.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Shared.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Service.Contracts.pdb
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Entities.pdb
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Shared.pdb
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Helpers.pdb
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Repository.pdb
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\bin\Debug\net7.0\ACDS.RevBill.Contracts.pdb
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.RevBill.Presentation.csproj.AssemblyReference.cache
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.RevBill.Presentation.GeneratedMSBuildEditorConfig.editorconfig
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.RevBill.Presentation.AssemblyInfoInputs.cache
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.RevBill.Presentation.AssemblyInfo.cs
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.RevBill.Presentation.csproj.CoreCompileInputs.cache
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.RevBill.Presentation.sourcelink.json
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.Rev.07B4E5BF.Up2Date
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.RevBill.Presentation.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\refint\ACDS.RevBill.Presentation.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ACDS.RevBill.Presentation.pdb
+C:\RevAc\RevAc\RevAc\ACDS.RevBill.Presentation\obj\Debug\net7.0\ref\ACDS.RevBill.Presentation.dll

@@ -28,9 +28,10 @@ namespace ACDS.RevBill.Entities.Models
         public DateTime? DateModified { get; set; }
         public string? ModifiedBy { get; set; }
         public string? AgencyCode { get; set; }
-        public string? RevenueCode { get; set; }
+       // public string? PaymentCode { get; set; }
         public bool? OrganisationStatus { get; set; }
         public int OrganisationApprovalStatus { get; set; }
+        //public string? PaymentCode { get; set; }
         public string? TenantName { get; set; }
     }
 }

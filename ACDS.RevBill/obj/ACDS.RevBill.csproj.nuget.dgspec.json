@@ -1,0 +1,914 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill\\ACDS.RevBill.csproj": {}
+  },
+  "projects": {
+    "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Contracts\\ACDS.RevBill.Contracts.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Contracts\\ACDS.RevBill.Contracts.csproj",
+        "projectName": "ACDS.RevBill.Contracts",
+        "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Contracts\\ACDS.RevBill.Contracts.csproj",
+        "packagesPath": "C:\\Users\\User1\\.nuget\\packages\\",
+        "outputPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Contracts\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\User1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Entities\\ACDS.RevBill.Entities.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Entities\\ACDS.RevBill.Entities.csproj"
+              },
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Shared\\ACDS.RevBill.Shared.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Shared\\ACDS.RevBill.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Entities\\ACDS.RevBill.Entities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Entities\\ACDS.RevBill.Entities.csproj",
+        "projectName": "ACDS.RevBill.Entities",
+        "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Entities\\ACDS.RevBill.Entities.csproj",
+        "packagesPath": "C:\\Users\\User1\\.nuget\\packages\\",
+        "outputPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Entities\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\User1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Audit.WebApi.Core": {
+              "target": "Package",
+              "version": "[21.0.0, )"
+            },
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "NETCore.MailKit": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Helpers\\ACDS.RevBill.Helpers.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Helpers\\ACDS.RevBill.Helpers.csproj",
+        "projectName": "ACDS.RevBill.Helpers",
+        "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Helpers\\ACDS.RevBill.Helpers.csproj",
+        "packagesPath": "C:\\Users\\User1\\.nuget\\packages\\",
+        "outputPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Helpers\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\User1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Contracts\\ACDS.RevBill.Contracts.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Contracts\\ACDS.RevBill.Contracts.csproj"
+              },
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Entities\\ACDS.RevBill.Entities.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Entities\\ACDS.RevBill.Entities.csproj"
+              },
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Service.Contracts\\ACDS.RevBill.Service.Contracts.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Service.Contracts\\ACDS.RevBill.Service.Contracts.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "EPPlus": {
+              "target": "Package",
+              "version": "[6.2.10, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "NPOI": {
+              "target": "Package",
+              "version": "[2.6.2, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[111.3.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Presentation\\ACDS.RevBill.Presentation.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Presentation\\ACDS.RevBill.Presentation.csproj",
+        "projectName": "ACDS.RevBill.Presentation",
+        "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Presentation\\ACDS.RevBill.Presentation.csproj",
+        "packagesPath": "C:\\Users\\User1\\.nuget\\packages\\",
+        "outputPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Presentation\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\User1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Entities\\ACDS.RevBill.Entities.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Entities\\ACDS.RevBill.Entities.csproj"
+              },
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Helpers\\ACDS.RevBill.Helpers.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Helpers\\ACDS.RevBill.Helpers.csproj"
+              },
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Repository\\ACDS.RevBill.Repository.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Repository\\ACDS.RevBill.Repository.csproj"
+              },
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Service.Contracts\\ACDS.RevBill.Service.Contracts.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Service.Contracts\\ACDS.RevBill.Service.Contracts.csproj"
+              },
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Shared\\ACDS.RevBill.Shared.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Shared\\ACDS.RevBill.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Audit.WebApi.Core": {
+              "target": "Package",
+              "version": "[21.0.0, )"
+            },
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Versioning": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Repository\\ACDS.RevBill.Repository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Repository\\ACDS.RevBill.Repository.csproj",
+        "projectName": "ACDS.RevBill.Repository",
+        "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Repository\\ACDS.RevBill.Repository.csproj",
+        "packagesPath": "C:\\Users\\User1\\.nuget\\packages\\",
+        "outputPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Repository\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\User1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Contracts\\ACDS.RevBill.Contracts.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Contracts\\ACDS.RevBill.Contracts.csproj"
+              },
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Entities\\ACDS.RevBill.Entities.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Entities\\ACDS.RevBill.Entities.csproj"
+              },
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Helpers\\ACDS.RevBill.Helpers.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Helpers\\ACDS.RevBill.Helpers.csproj"
+              },
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Service.Contracts\\ACDS.RevBill.Service.Contracts.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Service.Contracts\\ACDS.RevBill.Service.Contracts.csproj"
+              },
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Shared\\ACDS.RevBill.Shared.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Shared\\ACDS.RevBill.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Service.Contracts\\ACDS.RevBill.Service.Contracts.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Service.Contracts\\ACDS.RevBill.Service.Contracts.csproj",
+        "projectName": "ACDS.RevBill.Service.Contracts",
+        "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Service.Contracts\\ACDS.RevBill.Service.Contracts.csproj",
+        "packagesPath": "C:\\Users\\User1\\.nuget\\packages\\",
+        "outputPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Service.Contracts\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\User1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Entities\\ACDS.RevBill.Entities.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Entities\\ACDS.RevBill.Entities.csproj"
+              },
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Shared\\ACDS.RevBill.Shared.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Shared\\ACDS.RevBill.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Services\\ACDS.RevBill.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Services\\ACDS.RevBill.Services.csproj",
+        "projectName": "ACDS.RevBill.Services",
+        "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Services\\ACDS.RevBill.Services.csproj",
+        "packagesPath": "C:\\Users\\User1\\.nuget\\packages\\",
+        "outputPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\User1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Contracts\\ACDS.RevBill.Contracts.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Contracts\\ACDS.RevBill.Contracts.csproj"
+              },
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Entities\\ACDS.RevBill.Entities.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Entities\\ACDS.RevBill.Entities.csproj"
+              },
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Helpers\\ACDS.RevBill.Helpers.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Helpers\\ACDS.RevBill.Helpers.csproj"
+              },
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Presentation\\ACDS.RevBill.Presentation.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Presentation\\ACDS.RevBill.Presentation.csproj"
+              },
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Service.Contracts\\ACDS.RevBill.Service.Contracts.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Service.Contracts\\ACDS.RevBill.Service.Contracts.csproj"
+              },
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Shared\\ACDS.RevBill.Shared.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Shared\\ACDS.RevBill.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
+            "CsvHelper": {
+              "target": "Package",
+              "version": "[30.0.1, )"
+            },
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Binder": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "NETCore.MailKit": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "NLog.Extensions.Logging": {
+              "target": "Package",
+              "version": "[5.2.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "PasswordGenerator": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "QRCoder": {
+              "target": "Package",
+              "version": "[1.6.0, )"
+            },
+            "SkiaSharp.QrCode": {
+              "target": "Package",
+              "version": "[0.6.0, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "System.Linq": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Shared\\ACDS.RevBill.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Shared\\ACDS.RevBill.Shared.csproj",
+        "projectName": "ACDS.RevBill.Shared",
+        "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Shared\\ACDS.RevBill.Shared.csproj",
+        "packagesPath": "C:\\Users\\User1\\.nuget\\packages\\",
+        "outputPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\User1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Entities\\ACDS.RevBill.Entities.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Entities\\ACDS.RevBill.Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill\\ACDS.RevBill.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill\\ACDS.RevBill.csproj",
+        "projectName": "ACDS.RevBill",
+        "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill\\ACDS.RevBill.csproj",
+        "packagesPath": "C:\\Users\\User1\\.nuget\\packages\\",
+        "outputPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\User1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Helpers\\ACDS.RevBill.Helpers.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Helpers\\ACDS.RevBill.Helpers.csproj"
+              },
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Repository\\ACDS.RevBill.Repository.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Repository\\ACDS.RevBill.Repository.csproj"
+              },
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Services\\ACDS.RevBill.Services.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Services\\ACDS.RevBill.Services.csproj"
+              },
+              "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Shared\\ACDS.RevBill.Shared.csproj": {
+                "projectPath": "C:\\RevAc\\RevAc\\RevAc\\ACDS.RevBill.Shared\\ACDS.RevBill.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Audit.NET.SqlServer": {
+              "target": "Package",
+              "version": "[20.2.2, )"
+            },
+            "Audit.WebApi.Core": {
+              "target": "Package",
+              "version": "[21.0.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "Microsoft.AspNetCore.Diagnostics.HealthChecks": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[5.1.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "NLog.Database": {
+              "target": "Package",
+              "version": "[5.1.2, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Serilog.Enrichers.Environment": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "Serilog.Exceptions": {
+              "target": "Package",
+              "version": "[8.4.0, )"
+            },
+            "Serilog.Sinks.Console": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -23,6 +23,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Migrations.Operations.Builders;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using NPOI.SS.Formula.Functions;
 using Org.BouncyCastle.Math.EC;
@@ -31,6 +32,7 @@ using SkiaSharp.QrCode;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Net.WebSockets;
+using System.Text.RegularExpressions;
 using static System.Net.WebRequestMethods;
 using File = System.IO.File;
 using Property = ACDS.RevBill.Entities.Models.Property;
@@ -40,7 +42,7 @@ namespace ACDS.RevBill.Services
     internal sealed class BillingService : IBillingService
     {
         //private const string SingleBillPrefix = "SB"; 
-       //private const string HarmonizedBillPrefix = "HB"; 
+        //private const string HarmonizedBillPrefix = "HB"; 
 
 
         private readonly IRepositoryManager _repository;
@@ -177,204 +179,396 @@ namespace ACDS.RevBill.Services
             return (bills: billsDto, metaData: billsWithMetaData.MetaData);
         }
 
-        public async Task<Response> CreatePropertyBillAsync(int organisationId, int propertyId, int customerId,
-   CreateBulkPropertyBill createBillDto, bool trackChanges)
+
+        public async Task<List<Response>> CreatePropertyBillAsync(int organisationId, int propertyId, int customerId,
+                   CreateBulkPropertyBill createBillDto, bool trackChanges)
         {
+            List<Response> responseList = new List<Response>();
             Response response = new();
-            await CheckIfOrganisationExists(organisationId, trackChanges);
-            var originalPayerID = await _context.Customers
-                .Where(x => x.CustomerId.Equals(customerId) && x.OrganisationId.Equals(organisationId))
-                .FirstOrDefaultAsync();
-
-            if (originalPayerID == null)
-            {
-                response.Status = 404;
-                response.StatusMessage = "Customer does not exist!";
-                response.Data = customerId;
-                return response;
-            }
-
-            var customerbills = await CheckIfBillExists(organisationId, propertyId, customerId);
-            var customerproperty = await CheckPropertyCustomer(customerId, propertyId);
-
-            // Checking if customer is registered in this property; if not, register customer in property
-            if (customerproperty == 0)
-            {
-                CreateCustomerProperty(customerId, propertyId, organisationId, createBillDto.CreatePropertyBillDto.First().CreatedBy);
-            }
-
-            List<CreatePropertyBillDto> billexist = new List<CreatePropertyBillDto>();
-            List<CreatePropertyBillDto> bills = new List<CreatePropertyBillDto>();
-
-            foreach (CreatePropertyBill item in createBillDto.CreatePropertyBillDto)
-            {
-                foreach (BillRevenuePricesDto a in item.BillRevenuePrices)
+            Arrears arrearsetting = new Arrears();
+            decimal arrears = 0;
+            decimal billamount = 0;
+            int userId = 0;
+            string serialNo = "";
+             await CheckIfOrganisationExists(organisationId, trackChanges);
+            int billcountgeneratedtodate = 0;
+       
+                if (createBillDto.DeactivateArears == true)
                 {
-                    CreatePropertyBillDto billDto = new CreatePropertyBillDto
-                    {
-                        BusinessTypeId = item.BusinessTypeId,
-                        BusinessSizeId = item.BusinessSizeId,
-                        AgencyId = item.AgencyId,
-                        AppliedDate = item.AppliedDate,
-                        DateCreated = item.DateCreated,
-                        CreatedBy = item.CreatedBy,
-                        RevenueId = a.RevenueId,
-                        Category = a.Category,
-                        BillAmount = a.BillAmount
-                    };
+                    //Get approver UserId so approval button on the frontend only shows to him
+                    userId = _context.Users.Where(x => x.Email == createBillDto.Approver && x.OrganisationId == organisationId && x.Active == true).SingleOrDefault().UserId;
 
-                    var checkBillbytype = customerbills
-                        .Where(x => x.BusinessTypeId == item.BusinessTypeId && x.RevenueId == a.RevenueId && x.AppliedDate == item.AppliedDate)
-                        .Count();
-
-                    if (checkBillbytype != 0)
-                    {
-                        billexist.Add(billDto);
-                    }
-                    else
-                    {
-                        bills.Add(billDto);
-                    }
-                }
-            }
-
-            var billEntity = _mapper.Map<IEnumerable<Billing>>(bills);
-            var billToReturn = _mapper.Map<IEnumerable<GetBillDto>>(billEntity);
-            var payerID = originalPayerID.PayerId.Substring(2);
-            var billcount = billEntity.Count();
-            string harmonizedBillReference = string.Empty;
-
-           
-
-            if (billcount >= 1 && customerbills.Select(e => e.HarmonizeStore).FirstOrDefault() == null)
-            {
-                harmonizedBillReference = BillingUtility.GenerateHarmonizedBillReference(payerID, organisationId);
-                harmonizedBillReference = "HB-" + harmonizedBillReference; // Prefix for harmonized bill
-                Console.WriteLine($"Generated Harmonized Bill Reference: {harmonizedBillReference}"); // Debug output
-            }
-            else
-            {
-                harmonizedBillReference = customerbills.Select(e => e.HarmonizeStore).FirstOrDefault();
-                Console.WriteLine($"Retrieved Harmonized Bill Reference: {harmonizedBillReference}"); // Debug output
-            }
-
-            if (customerbills.Count == 1)
-            {
-                // Update bills without harmonized reference
-                foreach (var item in customerbills)
-                {
-                    item.HarmonizedBillReferenceNo = item.HarmonizeStore;
-                    item.ModifiedBy = billEntity.Select(e => e.ModifiedBy).Single();
-                    item.DateModified = DateTime.Now;
-                    _context.Billing.Update(item);
-                    _context.SaveChanges();
-                }
-            }
-
-            foreach (var record in billEntity)
-            {
-                // Get agency and revenue codes
-                var agencyCode = await _context.Agencies
-                    .Where(x => x.AgencyId.Equals(record.AgencyId) && x.OrganisationId.Equals(organisationId))
-                    .Select(x => x.AgencyCode).FirstOrDefaultAsync();
-
-                var revenueCode = await _context.Revenues
-                    .Where(x => x.RevenueId.Equals(record.RevenueId) && x.OrganisationId.Equals(organisationId))
-                    .FirstOrDefaultAsync();
-
-                var propertyAddress = await _context.Properties
-                    .Where(x => x.PropertyId.Equals(propertyId) && x.OrganisationId.Equals(organisationId))
-                    .Select(x => x.BuildingNo + ", " + x.LocationAddress)
-                    .FirstOrDefaultAsync();
-
-                // Get current date and future date for applied date
-                DateTime currentDate = DateTime.Now;
-                string formattedDateTime = currentDate.ToString("yyyy-MM-dd");
-                string currentYear = currentDate.Year.ToString();
-
-                // Generate bill reference with prefix
-                record.BillReferenceNo = "SB-" + BillingUtility.GenerateBillReference(payerID, organisationId); // Prefix for single bill
-                record.HarmonizedBillReferenceNo = harmonizedBillReference;
-
-                GenerateBillRequest billRequest = new()
-                {
-                    Amount = record.BillAmount,
-                    PayerID = originalPayerID.PayerId,
-                    AgencyRef = agencyCode,
-                    RevCode = revenueCode.RevenueCode,
-                    EntryDate = formattedDateTime,
-                    AppliedDate = record.AppliedDate,
-                    BillReference = record.BillReferenceNo,
-                    HarmonizedBillReference = record.HarmonizedBillReferenceNo,
-                    AssessRef = record.BillReferenceNo,
-                    Year = currentYear,
-                    PropertyAddress = propertyAddress
-                };
-
-                // Call procedure to push bill to EBS-RCM
-                BillResponses = _modelService.GenerateBillReference(billRequest);
-
-                // As requested by business, a single bill does not need harmonized ref 
-                // Not storing the harmonized bill reference for a single bill in its field
-                // though saving it in EBS and a nullable field called HarmonizeStore
-                // If ever another bill is generated, I then update harmonized bill reference No field
-                // with what is in HarmonizeStore
-                if (billcount == 1 && customerbills.Count == 0)
-                {
-                    record.HarmonizeStore = harmonizedBillReference;
-                    record.HarmonizedBillReferenceNo = null;
-                }
-
-                record.BillStatusId = 1;
-                record.BillTypeId = 1;
-                record.FrequencyId = 6;
-                record.BillArrears = record.BillAmount;
-                record.AmountPaid = 0;
-                record.Billbf = 0;
-                record.Year = DateTime.Now.Year;
-            }
-
-            if (billexist.Count > 0)
-            {
-                response.StatusMessage = "Bill(s) Exist! " + harmonizedBillReference;
-                response.Data = billexist;
-                response.Status = 200;
-            }
-            else
-            {
-                _repository.Billing.CreatePropertyBill(organisationId, propertyId, customerId, billEntity);
-                await _repository.SaveAsync();
-
-                // Add customer to the property
-                if (billcount == 1)
-                {
-                    var billId = _context.Billing
-                        .Where(x => x.BillReferenceNo == billEntity.FirstOrDefault().BillReferenceNo)
-                        .FirstOrDefault().BillId;
-
-                    response.StatusMessage = "Bill generated successfully";
-                    response.Data = billId;
-                    response.Status = 200;
+                    _logger.LogInfo("CreatePropertyBillAsync Approver-userId: " + userId.ToString());
                 }
                 else
                 {
-                    response.StatusMessage = "Bill generated successfully";
-                    response.Data = harmonizedBillReference;
-                    response.Status = 200;
+                    arrearsetting = await GetArrearSetting(organisationId);
+
+                }
+                var originalPayerID = await _context.Customers.Where(x => x.CustomerId.Equals(customerId) && x.OrganisationId.Equals(organisationId)).FirstOrDefaultAsync();
+                if (originalPayerID == null)
+                {
+                    response.Status = 404;
+                    response.StatusMessage = "customer Does not exist !";
+                    response.Data = customerId;
+                    responseList.Add(response);
+
+                    return responseList;
+                }
+                if (originalPayerID.PayerId.IsNullOrEmpty())
+                {
+                    response.Status = 404;
+                    response.StatusMessage = "Customer does not have a payerId!";
+                    response.Data = customerId;
+                    responseList.Add(response);
+
+                    return responseList;
+                }
+                var customerbills = await CheckIfBillExists(organisationId, propertyId, customerId, DateTime.Now.Year);
+                serialNo = customerbills.Select(x => x.SerialNo).FirstOrDefault();
+                var customerproperty = await CheckPropertyCustomer(customerId, propertyId);
+
+                //checking if customer is registered in this property if not register customer  in property
+                if (customerproperty == 0)
+                {
+                    CreateCustomerProperty(customerId, propertyId, organisationId, createBillDto.CreatePropertyBillDto.First().CreatedBy);
                 }
 
-                // Send mail to customer
-                MailRequest mailRequest = new MailRequest
+                List<BillExistDto> billexist = new List<BillExistDto>();
+
+                List<CreatePropertyBillDto> bills = new List<CreatePropertyBillDto>();
+
+                foreach (CreatePropertyBill item in createBillDto.CreatePropertyBillDto)
                 {
-                    Subject = "Billing",
-                    ToEmail = originalPayerID.Email,
-                    Body = Getbody(billEntity),
-                    FirstName = originalPayerID.FirstName,
-                    LastName = originalPayerID.LastName
-                };
-                // await _mailService.SendBillGenerationAsync(mailRequest);
+
+
+                    foreach (BillRevenuePricesDto a in item.BillRevenuePrices)
+                    {
+                        CreatePropertyBillDto billDto = new CreatePropertyBillDto();
+                        billDto.BusinessTypeId = item.BusinessTypeId;
+                        billDto.BusinessSizeId = item.BusinessSizeId;
+                        billDto.AgencyId = item.AgencyId;
+                        billDto.AppliedDate = item.AppliedDate;
+                        billDto.DateCreated = item.DateCreated;
+                        billDto.CreatedBy = item.CreatedBy;
+                        billDto.RevenueId = a.RevenueId;
+                        billDto.Category = a.Category;
+                        billDto.BillAmount = a.BillAmount;
+
+                        var checkBillbytype = customerbills.Where(x => x.BusinessTypeId == item.BusinessTypeId && x.RevenueId == a.RevenueId && x.AppliedDate == item.AppliedDate).FirstOrDefault();
+                        //if (checkBillbytype != null && createBillDto.DeactivateArears == false)
+                        if (checkBillbytype != null)
+                        {
+                            BillExistDto existDto = new BillExistDto();
+                            _mapper.Map(billDto, existDto);
+                            existDto.BillReferenceNo = checkBillbytype.BillReferenceNo;
+                            existDto.HarmonizedBillReferenceNo = checkBillbytype.HarmonizedBillReferenceNo;
+                            existDto.BillId = checkBillbytype.BillId;
+                            billexist.Add(existDto);
+                        }
+                        else
+                        {
+                            bills.Add(billDto);
+                        }
+                    }
+
+
+                }
+                var billEntity = _mapper.Map<IEnumerable<Billing>>(bills);
+
+
+                var billToReturn = _mapper.Map<IEnumerable<GetBillDto>>(billEntity);
+
+
+
+
+                var payerID = originalPayerID.PayerId.Substring(2);
+                var billcount = billEntity.Count();
+                string harmonizedBillReference = string.Empty;
+                if (billcount >= 1 && customerbills.Select(e => e.HarmonizeStore).FirstOrDefault() == null)
+                {
+                    harmonizedBillReference = BillingUtility.GenerateHarmonizedBillReference(payerID, organisationId);
+                harmonizedBillReference = "HB-" + harmonizedBillReference; // Prefix for harmonized bill
+                Console.WriteLine($"Generated Harmonized Bill Reference: {harmonizedBillReference}"); // Debug output
+            }
+                else
+                {
+                    harmonizedBillReference = customerbills.Select(e => e.HarmonizeStore ?? e.HarmonizedBillReferenceNo).FirstOrDefault();
+
+                }
+                if (customerbills.Count > 1)
+                {
+                    //update bills without harmonised reference
+                    foreach (var item in customerbills)
+                    {
+                        if (item.HarmonizedBillReferenceNo == null)
+                        {
+                            item.HarmonizedBillReferenceNo = item.HarmonizeStore;
+                            item.ModifiedBy = billEntity.Select(e => e.CreatedBy).FirstOrDefault();
+                            item.DateModified = DateTime.Now;
+                            _context.Billing.Update(item);
+                            _context.SaveChanges();
+                        }
+                    }
+                }
+                foreach (var record in billEntity)
+                {
+                    //serialNocount += 1;
+                    //get agency and revenue codes
+                    var agencyCode = await _context.Agencies.Where(x => x.AgencyId.Equals(record.AgencyId) && x.OrganisationId.Equals(organisationId))
+                                        .FirstOrDefaultAsync();
+
+                    var revenueCode = await _context.Revenues.Where(x => x.RevenueId.Equals(record.RevenueId) && x.OrganisationId.Equals(organisationId))
+                                        .FirstOrDefaultAsync();
+
+                    var propertyAddress = await _context.Properties.Where(x => x.PropertyId.Equals(propertyId) && x.OrganisationId.Equals(organisationId))
+                                                .Select(x => x.BuildingNo + ", " + x.LocationAddress)
+                                                .FirstOrDefaultAsync();
+
+
+                    //get current date and future date for applied date
+                    DateTime currentDate = DateTime.Now;
+                    string formattedDateTime = currentDate.ToString("yyyy-MM-dd");
+                    string currentYear = currentDate.Year.ToString();
+
+                //Generate bill reference
+                record.BillReferenceNo = "SB-" + BillingUtility.GenerateBillReference(payerID, organisationId); // Prefix for single bill
+                
+
+                    int recordCount = billEntity.Count();
+                    record.HarmonizedBillReferenceNo = harmonizedBillReference;
+
+                    if (arrearsetting == null)
+                    {
+                        billamount = record.BillAmount;
+                    }
+                    else
+                    {
+                        arrears = await GetBillArrears(arrearsetting, organisationId, record.RevenueId, record.BusinessTypeId, customerId, propertyId);
+                        billamount = arrears + record.BillAmount;
+                    }
+                    //record.SerialNo =organisationId + "-" + currentYear + "-" + (billcountgeneratedtodate);
+                    GenerateBillRequest billRequest = new()
+                    {
+                        Amount = billamount,
+                        PayerID = originalPayerID.PayerId,
+                        AgencyRef = agencyCode.AgencyCode,
+                        AgencyName = agencyCode.AgencyName,
+                        RevCode = revenueCode.RevenueCode,
+                        EntryDate = formattedDateTime,
+                        AppliedDate = record.AppliedDate,
+                        BillReference = record.BillReferenceNo,
+                        HarmonizedBillReference = record.HarmonizedBillReferenceNo,
+                        Year = currentYear,
+                        PropertyAddress = propertyAddress
+                    };
+
+                    if (createBillDto.DeactivateArears == true)
+                    {
+                        record.ApprovalBillStatusId = 11;
+                        record.UserId = userId;
+                    }
+                    else
+                    {
+                        if (serialNo == null)
+                        {
+                            billcountgeneratedtodate = _context.Billing.Where(x => x.Year == DateTime.Now.Year && x.OrganisationId == organisationId).Count();
+                            billcountgeneratedtodate = billcountgeneratedtodate + 1;
+                            billRequest.AssessRef = organisationId + "-" + currentYear + "-" + billcountgeneratedtodate;
+                            serialNo = billRequest.AssessRef;
+                        }
+                        else
+                        {
+                            billRequest.AssessRef = serialNo;
+                        }
+                        //call procedure to push bill to EBS-RCM
+                        BillResponses = _modelService.GenerateBillReference(billRequest);
+                    }
+                    //As requested by business a single bill does not need harmonisedref 
+                    // am not storing the harmonizedbillreference  for single bill in its field
+                    //though am saving it in EBS and a nullable field called HarmonizeStore
+                    //if ever another bill is generated I then update harmonizedbillreferenceNo field
+                    // with what is in HarmonizeStore
+                    if (billcount == 1 && customerbills.Count == 0)
+                    {
+
+                        record.HarmonizedBillReferenceNo = null;
+                    }
+                    record.BillStatusId = 1;
+                    record.BillTypeId = 1;
+                    record.FrequencyId = 6;
+                    record.BillArrears = arrears;
+                    record.AmountPaid = 0;
+                    record.Billbf = 0;
+                    record.Year = DateTime.Now.Year;
+                    record.DateModified = record.DateCreated;
+                    record.HarmonizeStore = harmonizedBillReference;
+                    record.ActivityBillStatusId = 4;
+                    record.SerialNo = serialNo;
+                    record.Quantity = 1;
+                    if (createBillDto.DeactivateArears == true)
+                    {
+                        record.UserId = userId;
+                    }
+
+
+
+                }
+                if (billexist.Count > 0)
+                {
+                    response.StatusMessage = "Bill(s) Exists! ";
+                    if (billexist.Count > 1)
+                    {
+                        response.Data = billexist.FirstOrDefault().HarmonizedBillReferenceNo;
+                    }
+                    else
+                    {
+                        response.Data = billexist.FirstOrDefault().BillId;
+                    }
+                    response.Status = 200;
+                    responseList.Add(response);
+                }
+                else
+                {
+                    if (createBillDto.DeactivateArears == true)
+                    {
+                        //if the global arrears setting is to be inactive for this bill, we store the bill
+                        //in a temporary table until approved
+                        var savedinBillTem = await BillPartGeneration(organisationId, propertyId, customerId, createBillDto.Approver, billEntity);
+
+                        billEntity = _mapper.Map<IEnumerable<Billing>>(savedinBillTem);
+                        _repository.Billing.CreatePropertyBill(organisationId, propertyId, customerId, billEntity);
+                        await _repository.SaveAsync();
+
+                        if (billcount == 1)
+                        {
+
+                            response.StatusMessage = "Bill successfully sent for approval";
+                            response.Data = billEntity.FirstOrDefault().BillId;
+                            response.Status = 200;
+                        }
+                        else
+                        {
+                            response.StatusMessage = "Bills successfully sent for approval";
+                            response.Data = harmonizedBillReference;
+                            response.Status = 200;
+                        }
+                        responseList.Add(response);
+                        return responseList;
+                    }
+                    else
+                    {
+                        _repository.Billing.CreatePropertyBill(organisationId, propertyId, customerId, billEntity);
+                        await _repository.SaveAsync();
+                        if (IsValidEmail(originalPayerID.Email))
+                        {
+                            //send mail to custmer
+
+                            MailRequest mailRequest = new MailRequest();
+                            mailRequest.Subject = "Billing";
+                            mailRequest.ToEmail = originalPayerID.Email;
+                            mailRequest.Body = Getbody(billEntity);
+                            mailRequest.FirstName = originalPayerID.FirstName;
+                            mailRequest.LastName = originalPayerID.LastName;
+                            await _mailService.SendBillGenerationAsync(mailRequest);
+                        };
+                    }
+                    if (billcount == 1)
+                    {
+
+                        var billId = billEntity.FirstOrDefault().BillId;// _context.Billing.Where(x => x.BillReferenceNo == billEntity.FirstOrDefault().BillReferenceNo).FirstOrDefault().BillId;
+                        response.StatusMessage = "Bill generated successfully";
+                        response.Data = billId;
+                        response.Status = 200;
+                    }
+                    else
+                    {
+                        response.StatusMessage = "Bills generated successfully";
+                        response.Data = harmonizedBillReference;
+                        response.Status = 200;
+                    }
+                    responseList.Add(response);
+
+
+
+                }
+    
+         
+            return responseList;
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+
+            string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            return Regex.IsMatch(email, emailPattern);
+        }
+
+        private async Task<decimal> GetBillArrears(Arrears arrears, int organisationId, int revenueId, int businessTypeId, int customerId, int propertyId)
+        {
+            decimal result = 0;
+            var bills = await CheckIfBillExists(organisationId, propertyId, customerId, DateTime.Now.Year - 1);
+            var bill = bills.Where(x => x.RevenueId == revenueId && x.BusinessTypeId == businessTypeId).SingleOrDefault();
+            if (bill == null)
+                return result;
+            if (bill.BillArrears != 0)
+            {
+                var billarrear = bill.BillArrears;
+                if (arrears.InterestApplicable == true)
+                {
+                    // apply the interest and add to the arrears
+                    result = billarrear * (arrears.Percentage / 100) + billarrear;
+                }
+                else
+                {
+                    result = billarrear;
+                }
+            }
+            else if (bill.BillArrears == 0 && bill.BillStatusId.Equals(1))
+            {
+                var billarrear = bill.BillAmount;
+                if (arrears.InterestApplicable == true)
+                {
+                    // apply the interest and add to the arrears
+                    result = billarrear * (arrears.Percentage / 100) + billarrear;
+                }
+                else
+                {
+                    result = billarrear;
+                }
             }
 
+
+            return result;
+        }
+
+        private async Task<Response> CompleteApprovalDecision(Billing billEntity)
+        {
+            Response response = new Response();
+            try
+            {
+
+                long actualId = billEntity.BillPreApprovalId.HasValue ? billEntity.BillPreApprovalId.Value : 0;
+                if (actualId != 0)
+                {
+                    var billpreaproval = await _repository.BillPreApproval.GetBillAsync(actualId, true);
+                    billpreaproval.ActivityBillStatusId = 5;
+                    _mapper.Map<BillPreApproval>(billEntity);
+                    await _repository.SaveAsync();
+                }
+                else
+                {
+                    _logger.LogInfo("Billing-CompleteApprovalDecision: " + billEntity.ToString());
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Billing-CompleteApprovalDecision: " + billEntity.ToString() + ex.ToString());
+            }
             return response;
         }
         public string Getbody(IEnumerable<Billing> bills)
@@ -430,12 +624,12 @@ namespace ACDS.RevBill.Services
             }
             total.ToString("#,##0.00");
             var bill = bills.FirstOrDefault();
-            if(bill != null)
+            if (bill != null)
             {
                 tableRows += " <p> Beneficiary : <strong>" + (_context.Organisations.FirstOrDefault(x => x.OrganisationId == bills.First().OrganisationId)?.OrganisationName ?? "") + " </strong></p> <p> Applied Date : <strong>" + bills.First().AppliedDate;
                 tableRows += GetOrgPaymentBanks(bills.First().OrganisationId);
 
-                
+
 
             }
             return tableRows;
@@ -582,12 +776,12 @@ namespace ACDS.RevBill.Services
         }
 
         //helper methods
-        private async Task<List<Billing>> CheckIfBillExists(int organisationId, int propertyId, int customerId)
+        private async Task<List<Billing>> CheckIfBillExists(int organisationId, int propertyId, int customerId, int year)
         {
 
             try
             {
-                var custmerbills = await _context.Billing.Where(e => e.OrganisationId.Equals(organisationId) && e.CustomerId.Equals(customerId) && e.PropertyId.Equals(propertyId) && e.Year.Equals(DateTime.Now.Year) && e.BillTypeId == 1).ToListAsync();
+                var custmerbills = await _context.Billing.Where(e => e.OrganisationId.Equals(organisationId) && e.CustomerId.Equals(customerId) && e.PropertyId.Equals(propertyId) && e.Year.Equals(year) && e.BillTypeId == 1).ToListAsync();
                 Response dataResponse = new Response();
                 if (custmerbills.Count() == 0)
                 {
@@ -602,9 +796,9 @@ namespace ACDS.RevBill.Services
             {
 
                 throw;
-            }          
+            }
 
-           
+
         }
         public async Task<IEnumerable<GetBillDto>> CreateNonPropertyBillAsync(int organisationId, int customerId, CreateBulkNonProperty createBillDto, bool trackChanges)
         {
@@ -1256,7 +1450,7 @@ namespace ACDS.RevBill.Services
                                          Agency = _context.Agencies.Where(p => p.AgencyId == a.Property.AgencyId).FirstOrDefault(),
                                          Organisation = _context.Organisations.Where(p => p.OrganisationId == organisationId).FirstOrDefault(),
                                          BillFormat = _context.BillFormats.Where(p => p.OrganisationId == organisationId).FirstOrDefault(),
-                                         Category= _context.Category.Where (c => c.CategoryName==a.Category).FirstOrDefault()
+                                         Category = _context.Category.Where(c => c.CategoryName == a.Category).FirstOrDefault()
                                      }).ToListAsync();
 
                     //Generate QR Code Image 
@@ -1293,6 +1487,7 @@ namespace ACDS.RevBill.Services
                             LastName = item.Customer?.LastName,
                             FirstName = item.Customer?.FirstName,
                             MiddleName = item.Customer?.MiddleName,
+                            CorporateName = item.Customer?.CorporateName,
                             CustomerAddress = item.Customer?.Address,
                             PayerID = item.Customer?.PayerId,
                             AreaOffice = item.Agency?.AgencyName,
@@ -1306,14 +1501,14 @@ namespace ACDS.RevBill.Services
                             Credit = 0,
                             Arrears = (decimal)bill.BillArrears,
                             AmountPaid = bill.AmountPaid,
-                            Balance = bill.BillAmount,
+                            Balance = bill.BillAmount + bill.BillArrears,
                             OrganisationAddress = item.Organisation.Address,
                             OrganisationPhoneNumber = item.Organisation.PhoneNo,
                             OrganisationEmail = item.Organisation.Email,
                             BarCode = imageBytes,
                             SignatureOne = item.BillFormat.SignatureOneData,
                             SignatureTwo = item.BillFormat.SignatureTwoData,
-                            CategoryName =item.Category==null? "" : item.Category.CategoryName 
+                            CategoryName = item.Category == null ? "" : item.Category.CategoryName
                         });
                     }
                 }
@@ -1342,7 +1537,10 @@ namespace ACDS.RevBill.Services
 
                         // Generate QR Code Image 
                         var content = $"Bill Reference: {bill.HarmonizedBillReferenceNo}\nAmount: ₦{totalAmount}\nYear: {bill.Year}";
-                        var qrCodeData = $"https://kuje.credodemo.com/?ref={bill.HarmonizedBillReferenceNo}&type=harmonized";
+                        var qrCodeData = $"https://kuje.credodemo.com/?ref={bill.BillReferenceNo}&type=harmonized";
+
+                       // var content = $"Bill Reference: {bill.BillReferenceNo}\nAmount: ₦{bill.BillAmount}\nYear: {bill.Year}";
+                        //var qrCodeData = $"https://kuje.credodemo.com/?ref={bill.BillReferenceNo}&type=webguid";
 
                         using var generator = new QRCodeGenerator();
                         var level = ECCLevel.H;
@@ -1372,6 +1570,7 @@ namespace ACDS.RevBill.Services
                             LastName = pdfBill.Customer?.LastName,
                             FirstName = pdfBill.Customer?.FirstName,
                             MiddleName = pdfBill.Customer?.MiddleName,
+                            CorporateName = pdfBill.Customer?.CorporateName,
                             CustomerAddress = pdfBill.Customer?.Address,
                             PayerID = pdfBill.Customer?.PayerId,
                             AreaOffice = pdfBill.Agency?.AgencyName,
@@ -1383,9 +1582,9 @@ namespace ACDS.RevBill.Services
                             BillReference = bills.BillReferenceNo,
                             HarmonizedBillReference = bills.HarmonizedBillReferenceNo,
                             Debit = bills.BillAmount,
-                            Credit = 0,
-                            //Arrears
-                            Balance = bills.BillAmount,
+                            Arrears= bills.BillArrears ,
+                            Balance = bills.BillAmount +bills.BillArrears,
+                            Credit = 0,                                                    
                             OrganisationAddress = pdfBill.Organisation.Address,
                             OrganisationPhoneNumber = pdfBill.Organisation.PhoneNo,
                             OrganisationEmail = pdfBill.Organisation.Email,
@@ -1760,6 +1959,7 @@ namespace ACDS.RevBill.Services
         }
         public async Task<List<PreviewedbillResponse>> BulkPreviewedBilling(int organisationId, string createdby, IEnumerable<CreatePropertyBillUpload> previewedbills, bool trackChanges)
         {
+
             List<PreviewedbillResponse> billerrors = new List<PreviewedbillResponse>();
             Property property = new Property();
             int customer = 0;
@@ -1768,142 +1968,127 @@ namespace ACDS.RevBill.Services
             int agencyId = 0;
             string payerId = "";
             int counter = 0;
-
-            // Check that the agency exists
+            //check that validate ag
             agencyId = await CheckAgency(previewedbills.FirstOrDefault().Agency);
             if (agencyId == 0)
             {
-                billerrors.Add(new PreviewedbillResponse
-                {
-                    Bill = null,
-                    StatusMessage = "Agency does not exist!"
-                });
+                PreviewedbillResponse errorResp = new PreviewedbillResponse();
+                errorResp.Bill = null;
+                errorResp.StatusMessage = "Agency does not exist!";
+                billerrors.Add(errorResp);
             }
             else
             {
                 foreach (var item in previewedbills)
                 {
-                    counter++;
 
-                    // Check that business type exists
+                    counter++;
+                    //check that businesstype exists
                     businessType = await CheckBusinessType(organisationId, item.BusinessType);
                     if (businessType == 0)
                     {
-                        billerrors.Add(new PreviewedbillResponse
-                        {
-                            itemId = counter,
-                            Bill = item,
-                            StatusMessage = "Business Type does not exist"
-                        });
-                        continue;
+                        PreviewedbillResponse errorResp = new PreviewedbillResponse();
+                        errorResp.itemId = counter;
+                        errorResp.Bill = item;
+                        errorResp.StatusMessage = "Business Type does not exist";
+                        billerrors.Add(errorResp);
                     }
-
-                    // Check that revenue exists
-                    revenue = await CheckRevenue(organisationId, item.RevenueCode);
-                    if (revenue == 0)
+                    else
                     {
-                        billerrors.Add(new PreviewedbillResponse
+                        //check that revenue exists
+                        revenue = await CheckRevenue(organisationId, item.RevenueCode, businessType);
+                        if (revenue == 0)
                         {
-                            itemId = counter,
-                            Bill = item,
-                            StatusMessage = "Revenue does not exist"
-                        });
-                        continue;
-                    }
-
-                    // Check that property exists
-                    var propertyResp = await CheckIfPropertyExists(organisationId, agencyId, item);
-                    property = (Property)propertyResp.Data;
-
-                    if (property.PropertyId == 0)
-                    {
-                        // Check if street exists
-                        var street = await CheckStreet(item.StreetName, agencyId);
-                        if (street == 0)
-                        {
-                            billerrors.Add(new PreviewedbillResponse
-                            {
-                                itemId = counter,
-                                Bill = item,
-                                StatusMessage = "Street does not exist!"
-                            });
-                            continue;
-                        }
-
-                        // Create property if it doesn't exist
-                        if (street != 0)
-                        {
-                            property = await CreateProperty(organisationId, createdby, street, agencyId, property.SpaceIdentifierId, item);
+                            PreviewedbillResponse errorResp = new PreviewedbillResponse();
+                            errorResp.itemId = counter;
+                            errorResp.Bill = item;
+                            errorResp.StatusMessage = "Revenue does not exist";
+                            billerrors.Add(errorResp);
                         }
                     }
-
-                    if (property.PropertyId != 0)
+                    if (businessType != 0 && revenue != 0)
                     {
-                        if (string.IsNullOrEmpty(item.PayerID) || item.PayerID == "null")
+                        //check that property exists  
+                        var propertyResp = await CheckIfPropertyExists(organisationId, agencyId, item);
+                        property = (Property)propertyResp.Data;
+                        if (property.PropertyId == 0)
                         {
-                            // Check if PayerID exists or create one
-                            var payer = await CheckPayer(item);
 
-                            // Log what CheckPayer returns for debugging
-                            Console.WriteLine($"CheckPayer Result: Data = {payer?.Data}, StatusMessage = {payer?.StatusMessage}");
-
-                            // Ensure that payerId is being assigned correctly
-                            if (payer?.Data != null)
+                            if (property.SpaceIdentifierId == 0)
                             {
+                                PreviewedbillResponse errorResp = new PreviewedbillResponse();
+                                errorResp.itemId = counter;
+                                errorResp.Bill = item;
+                                errorResp.StatusMessage = "spaceIdentifier does not exists";
+                                billerrors.Add(errorResp);
+                            }
+                         
+                            //check if street exists
+                            var street = await CheckStreet(item.StreetName, agencyId);
+                            if (street == 0)
+                            {
+                                PreviewedbillResponse errorResp = new PreviewedbillResponse();
+                                errorResp.itemId = counter;
+                                errorResp.Bill = item;
+                                errorResp.StatusMessage = "Street does not exist!";
+                                billerrors.Add(errorResp);
+                            }
+
+
+                            if (street != 0)
+                            {
+                                //create propety
+                                property = await CreateProperty(organisationId, createdby, street, agencyId, property.SpaceIdentifierId, item);
+                            }
+
+                        }
+
+
+                        if (property.PropertyId != 0)
+                        {
+                            if (item.PayerID == null)
+                            {
+                                //check if payerId exists if not create one
+                                var payer = await CheckPayer(item);
                                 payerId = payer.Data.ToString();
+                                if (payerId == null)
+                                {
+                                    PreviewedbillResponse errorResp = new PreviewedbillResponse();
+                                    errorResp.itemId = counter;
+                                    errorResp.Bill = item;
+                                    errorResp.StatusMessage = payer.StatusMessage;
+                                    billerrors.Add(errorResp);
+                                }
+                            }
+                            //check that customer   
+                            customer = await CheckCustomer(organisationId, property.PropertyId, createdby, payerId, item);
+                            var billbyname = await CheckBillExistsandCreate(organisationId, property.PropertyId, agencyId, customer, payerId, item, createdby, businessType, revenue);
+                            if (billbyname.Status == 409)
+                            {
+                                PreviewedbillResponse errorResp = new PreviewedbillResponse();
+                                errorResp.itemId = counter;
+                                errorResp.Bill = item;
+                                errorResp.StatusMessage = "Bill already exists";
+                                billerrors.Add(errorResp);
                             }
                             else
                             {
-                                payerId = null;
-                            }
-
-                            if (payerId == null)
-                            {
-                                billerrors.Add(new PreviewedbillResponse
-                                {
-                                    itemId = counter,
-                                    Bill = item,
-                                    StatusMessage = payer?.StatusMessage ?? "Failed to create or retrieve PayerID"
-                                });
-                                continue;
+                                PreviewedbillResponse errorResp = new PreviewedbillResponse();
+                                errorResp.itemId = counter;
+                                errorResp.Bill = item;
+                                errorResp.StatusMessage = billbyname.StatusMessage;
+                                errorResp.Data = billbyname.Data;
+                                errorResp.Status = billbyname.Status;
+                                billerrors.Add(errorResp);
                             }
                         }
-                        else
-                        {
-                            payerId = item.PayerID;
-                        }
 
-                        // Check that customer exists and create the bill
-                        customer = await CheckCustomer(organisationId, property.PropertyId, createdby, payerId, item);
-                        var billbyname = await CheckBillExistsandCreate(organisationId, property.PropertyId, agencyId, customer, payerId, item, createdby, businessType, revenue);
 
-                        if (billbyname.Status == 409)
-                        {
-                            billerrors.Add(new PreviewedbillResponse
-                            {
-                                itemId = counter,
-                                Bill = item,
-                                StatusMessage = "Bill already exists"
-                            });
-                        }
-                        else
-                        {
-                            billerrors.Add(new PreviewedbillResponse
-                            {
-                                itemId = counter,
-                                Bill = item,
-                                StatusMessage = billbyname.StatusMessage,
-                                Data = billbyname.Data,
-                                Status = billbyname.Status
-                            });
-                        }
                     }
                 }
             }
-
             return billerrors;
         }
-
         //Get bill GetSpaceIdentifierId
         private async Task<Response> CheckBillExistsandCreate(int organisationId, int property, int agencyId, int customer, string payerId, CreatePropertyBillUpload createPropertyBill, string createdby, int businesstypeId, int revenueId)
         {
@@ -2046,81 +2231,59 @@ namespace ACDS.RevBill.Services
         private async Task<Response> CheckPayer(CreatePropertyBillUpload createPropertyBill)
         {
             Response payer = new Response();
-            GetTaxPayerRequestDto pidEntity = new GetTaxPayerRequestDto();
-            GetTaxPayerRequestDto getTaxPayerRequestDto = new GetTaxPayerRequestDto();
 
             // Check by Email
-            if (payer.Data == null && createPropertyBill.Email != null)
+            if (payer.Data == null && !string.IsNullOrEmpty(createPropertyBill.Email))
             {
-                getTaxPayerRequestDto.Param = createPropertyBill.Email;
-                pidEntity = _mapper.Map<GetTaxPayerRequestDto>(getTaxPayerRequestDto);
+                var pidEntity = new GetTaxPayerRequestDto { Param = createPropertyBill.Email };
                 var result = _modelService.GetCustomerDetailsByEmail(pidEntity);
-                payer.Data = result.FirstOrDefault()?.PayerID;
+                payer.Data = result?.FirstOrDefault()?.PayerID;
             }
 
             // Check by Phone Number
-            if (payer.Data == null && createPropertyBill.PhoneNumber != null)
+            if (payer.Data == null && !string.IsNullOrEmpty(createPropertyBill.PhoneNumber))
             {
-                getTaxPayerRequestDto.Param = createPropertyBill.PhoneNumber;
-                pidEntity = _mapper.Map<GetTaxPayerRequestDto>(getTaxPayerRequestDto);
+                var pidEntity = new GetTaxPayerRequestDto { Param = createPropertyBill.PhoneNumber };
                 var result1 = _modelService.GetCustomerDetailsByPhoneNumber(pidEntity);
-                payer.Data = result1.FirstOrDefault()?.PayerID;
+                payer.Data = result1?.FirstOrDefault()?.PayerID;
             }
 
-            // Check by Full Name
-            if (payer.Data == null && createPropertyBill.FullName != null)
+            // Check by Full Name (Fixed Incorrect Method Call)
+            if (payer.Data == null && !string.IsNullOrEmpty(createPropertyBill.FullName))
             {
-                getTaxPayerRequestDto.Param = createPropertyBill.FullName;
-                pidEntity = _mapper.Map<GetTaxPayerRequestDto>(getTaxPayerRequestDto);
-                var result2 = _modelService.GetCustomerDetailsByPhoneNumber(pidEntity); // Fixed method name
-                payer.Data = result2.FirstOrDefault()?.PayerID;
+                var pidEntity = new GetTaxPayerRequestDto { Param = createPropertyBill.FullName };
+                var result2 = _modelService.GetCustomerDetailsByName(pidEntity); 
+                payer.Data = result2?.FirstOrDefault()?.FullName;
             }
 
-            // If no Payer ID found, attempt to create one
+            // If No Payer Data Found, Proceed with New Payer Creation
             if (payer.Data == null)
             {
                 if (createPropertyBill.PayerType == "C")
                 {
-                    // Corporate payer creation
-                    CorporatePayerIDRequest corporatePayerID = new CorporatePayerIDRequest
+                    var corporatePayerID = new CorporatePayerIDRequest
                     {
                         CompanyName = createPropertyBill.FullName,
                         PhoneNumber = createPropertyBill.PhoneNumber,
                         Email = createPropertyBill.Email,
-                        Address = createPropertyBill.BuildingNumber + " " + createPropertyBill.StreetName,
-                        DateofIncorporation = DateTime.Now.ToString("MM/dd/yyyy")
+                        Address = $"{createPropertyBill.BuildingNumber} {createPropertyBill.StreetName}",
+                        DateofIncorporation = DateTime.Now.ToString()
                     };
+
                     var corpEntity = _mapper.Map<CorporatePayerIDRequest>(corporatePayerID);
-
-                    // Create the corporate PID and get the results
                     var result3 = _modelService.CreateCorporatePID(corpEntity);
-                    var firstResult = result3.FirstOrDefault();
 
-                    // Check if the first result is not null and process the outData
-                    if (firstResult != null)
+                    var corpPayerId = result3?.FirstOrDefault()?.outData;
+                    if (!string.IsNullOrEmpty(corpPayerId) && (corpPayerId.StartsWith("C") || corpPayerId.StartsWith("N")))
                     {
-                        var payerIdExtractor = new PayerIdExtractor();
-
-                        var test1 = payerIdExtractor.GetPayerId(firstResult.outData);
-                        if (test1.Successful)
-                        {
-
-                            payer.Data = test1.PayerId; // Set the payer ID
-                        }
-
-                        //if (firstResult.outData.Contains("C-") || firstResult.outData.Contains("N-"))
-                        //{
-                        //    payer.Data = firstResult.outData; // Set the payer ID
-                        //}
-
-                        // Always set payer.StatusMessage regardless of the condition
-                        payer.StatusMessage = firstResult.outData;
+                        payer.Data = corpPayerId;
                     }
+
+                    payer.StatusMessage = corpPayerId;
                 }
                 else
                 {
-                    // Individual payer creation
-                    CustomerEnumerationDto enumerationDto = new CustomerEnumerationDto
+                    var enumerationDto = new CustomerEnumerationDto
                     {
                         Type = createPropertyBill.PayerType,
                         Hash = "",
@@ -2133,16 +2296,17 @@ namespace ACDS.RevBill.Services
                         DateOfBirth = DateTime.Now.ToString(),
                         Phone = createPropertyBill.PhoneNumber,
                         Email = createPropertyBill.Email,
-                        Address = createPropertyBill.BuildingNumber + " " + createPropertyBill.StreetName,
+                        Address = $"{createPropertyBill.BuildingNumber} {createPropertyBill.StreetName}",
                         State = ""
                     };
-                    var result2 = await _modelService.CreatePIDWithBioData(enumerationDto);
 
-                    if (result2.Pid.StartsWith("C") || result2.Pid.StartsWith("N"))
+                    var result2 = await _modelService.CreatePIDWithBioData(enumerationDto);
+                    if (!string.IsNullOrEmpty(result2?.Pid) && (result2.Pid.StartsWith("C") || result2.Pid.StartsWith("N")))
                     {
-                        payer.Data = result2.Pid; // Set the payer ID
+                        payer.Data = result2.Pid;
                     }
-                    payer.StatusMessage = result2.StatusMessage; // Set the status message
+
+                    payer.StatusMessage = result2?.StatusMessage;
                 }
             }
 
@@ -2190,20 +2354,29 @@ namespace ACDS.RevBill.Services
         //create property
         private async Task<Property> CreateProperty(int organisationId, string createdby, int streetId, int agency, int spaceIdentifierId, CreatePropertyBillUpload createPropertyBill)
         {
+            Entities.Models.Property propertyEntity = null;
+            try
+            {
+                CreatePropertyDto createProperty = new CreatePropertyDto();
 
-            CreatePropertyDto createProperty = new CreatePropertyDto();
-            createProperty.AgencyId = agency;
-            createProperty.SpaceIdentifierId = spaceIdentifierId;
-            createProperty.StreetId = streetId;
-            createProperty.LocationAddress = createPropertyBill.BuildingNumber + " " + createPropertyBill.StreetName;
-            createProperty.SpaceFloor = Int32.Parse(createPropertyBill.SpaceFloor);
-            createProperty.BuildingNo = createPropertyBill.BuildingNumber;
-            createProperty.BuildingName = createPropertyBill.BuildingName;
-            createProperty.DateCreated = DateTime.Now;
-            createProperty.CreatedBy = createdby;
-            var propertyEntity = _mapper.Map<Entities.Models.Property>(createProperty);
-            _repository.Property.CreateProperty(organisationId, propertyEntity);
-            await _repository.SaveAsync();
+                createProperty.AgencyId = agency;
+                createProperty.SpaceIdentifierId = spaceIdentifierId;
+                createProperty.StreetId = streetId;
+                createProperty.LocationAddress = createPropertyBill.BuildingNumber + " " + createPropertyBill.StreetName;
+                createProperty.SpaceFloor = Int32.Parse(createPropertyBill.SpaceFloor);
+                createProperty.BuildingNo = createPropertyBill.BuildingNumber;
+                createProperty.BuildingName = createPropertyBill.BuildingName;
+                createProperty.DateCreated = DateTime.Now;
+                createProperty.CreatedBy = createdby;
+                 propertyEntity = _mapper.Map<Entities.Models.Property>(createProperty);
+                _repository.Property.CreateProperty(organisationId, propertyEntity);
+                await _repository.SaveAsync();
+            }
+            catch (Exception ex) {
+                propertyEntity = null;
+            }
+           
+           
 
 
             return propertyEntity;
@@ -2360,9 +2533,9 @@ namespace ACDS.RevBill.Services
             }
             return revprice.FirstOrDefault().Amount;
         }
-        private async Task<int> CheckRevenue(int organisationId, string revenue)
+        private async Task<int> CheckRevenue(int organisationId, string revenue, int businessType)
         {
-            var rev = await _context.Revenues.Where(x => x.RevenueCode.Equals(revenue) && x.OrganisationId.Equals(organisationId)).FirstOrDefaultAsync();
+            var rev = await _context.Revenues.Where(x => x.RevenueCode.Equals(revenue) && x.BusinessTypeId == businessType && x.OrganisationId.Equals(organisationId)).SingleOrDefaultAsync();
 
             if (rev == null)
             {
@@ -2530,34 +2703,417 @@ namespace ACDS.RevBill.Services
 
             return dataResponse;
         }
+        public async Task<Response> CreateArrearSetting(int organisationId, CreateArrearsDTO createArrears, bool trackChanges)
+        {
+            Response response = new Response();
+             await CheckIfOrganisationExists(organisationId, trackChanges);
+
+            var arrearSetting = _mapper.Map<Arrears>(createArrears);
+
+            var arrearExist = await _context.Arrears.Where(x => x.Year == createArrears.Year && x.Active == true && x.OrganisationId == organisationId).SingleOrDefaultAsync();
+            if (arrearExist is not null)
+            {
+
+                response.Status = 400;
+                response.StatusMessage = "A Setting already exists for the year " + arrearSetting.Year;
+                return response;
+            }
+            arrearSetting.OrganisationId = organisationId;
+            arrearSetting.Active = true;
+            _repository.Arrear.CreateArrearsAsync(arrearSetting);
+
+            await _repository.SaveAsync();
+
+
+            var arrearToReturn = _mapper.Map<GetArrearsDTO>(arrearSetting);
+            response.Status = 200;
+            response.StatusMessage = "";
+            response.Data = arrearToReturn;
+            return response;
+        }
+
+        public async Task<(IEnumerable<GetArrearsDTO> arrears, MetaData metaData)> GetArrearsSetting(int organisationId, RoleParameters requestParameters, bool trackChanges)
+        {
+            var arrearsWithMetaData = await _repository.Arrear.GetArrearbyOrgAsync(organisationId, requestParameters, true);
+            var arrearsDto = _mapper.Map<IEnumerable<GetArrearsDTO>>(arrearsWithMetaData);
+
+            return (arrears: arrearsDto, metaData: arrearsWithMetaData.MetaData);
+        }
+        private async Task<Arrears> GetArrearSetting(int organisationId)
+        {
+            var result = _context.Arrears.Where(x => x.OrganisationId == organisationId && x.Year == DateTime.Now.Year.ToString()).FirstOrDefault();
+
+
+            return result;
+        }
+
+        public async Task<Response> UpdateArrearSettings(int arrearId, UpdateArrearsdto updateArrears, bool trackChanges)
+        {
+            Response response = new Response();
+            var arrearExist = await _repository.Arrear.GetArrearAsync(arrearId, true);
+            if (arrearExist is null)
+            {
+
+                response.Status = 404;
+                response.StatusMessage = "Arrear Setting not found ";
+                return response;
+            }
+            _mapper.Map(updateArrears, arrearExist);
+            // _mapper.Map(arrearExist, updateArrears);
+            await _repository.SaveAsync();
+            response.Status = 200;
+            response.StatusMessage = "Arrear Update successful";
+            response.Data = _mapper.Map<GetArrearsDTO>(arrearExist);
+            return response;
+        }
+
+        public async Task<Response> InitiateStepDownBill(int organisationId, int billId, StepDownBillDto stepDown)
+        {
+            Response dataResponse = new Response();
+            if (stepDown.ApprovalBillStatusId == 6)
+            {
+                var bill = await _repository.Billing.GetBillAsync(organisationId, billId, true);
+                if (bill == null)
+                {
+                    dataResponse.StatusMessage = "Bill does not exists";
+                    dataResponse.Status = 200;
+                    return dataResponse;
+                }
+                if (bill.BillPreApprovalId != null && bill.UserId != 0)
+                {
+                    dataResponse.StatusMessage = "Approval is already requested!";
+                    dataResponse.Status = 200;
+                    return dataResponse;
+                }
+                var approver = await _repository.Users.GetEmailAsync(organisationId, stepDown.Approver, false);
+                if (approver == null)
+                {
+                    dataResponse.StatusMessage = "approver does not exists";
+                    dataResponse.Status = 200;
+                    return dataResponse;
+                }
+                if (bill.ApprovalBillStatusId != stepDown.ApprovalBillStatusId && bill.UserId != approver.UserId)
+                {
+                    List<Billing> billEntity = new List<Billing>();
+                    _mapper.Map(stepDown, bill);
+                    billEntity.Add(bill);
+                    int propertyId = bill.PropertyId.HasValue ? bill.PropertyId.Value : 0;
+                    // we store the bill
+                    //in a temporary table until approved
+                    var savedinBillTem = await BillPartGeneration(organisationId, propertyId, bill.CustomerId, stepDown.Approver, billEntity);
+                    bill.BillPreApprovalId = savedinBillTem.FirstOrDefault().BillPreApprovalId;
+
+                    bill.UserId = approver.UserId;
+                    await _repository.SaveAsync();
+                    dataResponse.StatusMessage = "Bill Successfully submitted for stepdown";
+                    //send mail to Approver
+
+                    MailRequest mailRequest = new MailRequest();
+                    mailRequest.Subject = "stepdown request";
+                    mailRequest.ToEmail = stepDown.Approver;
+                    //mailRequest.FirstName is used to send the initiator's Email to the mailsender
+                    mailRequest.FirstName = stepDown.ModifiedBy;
+                    mailRequest.BillReferece = "Bill Reference: " + bill.BillReferenceNo;
+                    await _mailService.SendInitiateMailAsync(mailRequest);
+                }
+                else if (bill.ApprovalBillStatusId == stepDown.ApprovalBillStatusId && bill.UserId == approver.UserId)
+                {
+                    dataResponse.StatusMessage = "No change detected";
+
+                }
+                else
+                {
+
+                    dataResponse.StatusMessage = "Bill already submitted for Stepdown";
+                }
+
+
+
+            }
+            else
+            {
+
+                dataResponse.StatusMessage = "Wrong option selected";
+            }
+            dataResponse.Status = 200;
+            return dataResponse;
+        }
+        private async Task<IEnumerable<BillPreApproval>> BillPartGeneration(int organisationId, int propertyId, int customerId, string approver, IEnumerable<Billing> billEntity)
+        {
+            //Is to generate bill for approval
+            var billTemEntity = _mapper.Map<IEnumerable<BillPreApproval>>(billEntity);
+            try
+            {
+                _logger.LogInfo("BillPartGeneration: " + billEntity.ToString());
+
+                _repository.BillPreApproval.CreatePropertyBill(organisationId, propertyId, customerId, billTemEntity);
+                await _repository.SaveAsync();
+
+                //send mail to Approver
+
+                MailRequest mailRequest = new MailRequest();
+                if (billEntity.FirstOrDefault().ApprovalBillStatusId == 11)
+                {
+                    mailRequest.Subject = "bill arrears deactivation approval";
+                }
+                else if (billEntity.FirstOrDefault().ApprovalBillStatusId == 10)
+                {
+                    mailRequest.Subject = "bill update approval";
+                }
+                else if (billEntity.FirstOrDefault().ApprovalBillStatusId == 6)
+                {
+                    mailRequest.Subject = "bill deactivation approval";
+                }
+                mailRequest.ToEmail = approver;
+                //mailRequest.FirstName is used to send the initiator's Email to the mailsender
+                mailRequest.FirstName = billEntity.FirstOrDefault().CreatedBy;
+                mailRequest.BillReferece = "Bill Reference: " + billEntity.FirstOrDefault().BillReferenceNo;
+                await _mailService.SendInitiateMailAsync(mailRequest);
+            }
+            catch (Exception ex)
+            {
+
+                _logger.LogError(ex.ToString());
+            }
+
+
+
+            return billTemEntity;
+        }
+
+
+        public async Task<List<Response>> ApproveRequest(int organisationId, ApproveRequestDTO stepDown)
+        {
+            Response dataResponse = new Response();
+            List<Response> dataResponseList = new List<Response>();
+            List<Billing> billentity = new List<Billing>();
+            long billpreprovalId = 0;
+            try
+            {
+                //iterate through all the bill items
+                foreach (var item in stepDown.BillIds)
+                {
+                    var bill = await _repository.Billing.GetBilltobeApprovedAsync(organisationId, item.BillId, true);
+                    if (bill == null)
+                    {
+                        dataResponse.StatusMessage = "Bill does not exists";
+                        dataResponse.Data = item.BillId;
+                        dataResponse.Status = 200;
+
+                    }
+                    else
+                    {
+                        billpreprovalId = bill.BillPreApprovalId.HasValue ? bill.BillPreApprovalId.Value : 0;
+                        if (billpreprovalId == 0)
+                        {
+                            dataResponse.StatusMessage = "Bill already worked on / no approval requested";
+                            dataResponse.Data = item.BillId;
+                            dataResponse.Status = 200;
+                        }
+                        if (bill.ApprovalBillStatusId == item.ApprovalBillStatusId)
+                        {
+                            dataResponse.StatusMessage = "No change detected";
+                            dataResponse.Data = bill.BillId;
+                            dataResponse.Status = 200;
+
+                        }
+                        else
+                        {
+                            if (item.ApprovalBillStatusId == 7 || item.ApprovalBillStatusId == 8)
+                            {
+
+
+
+                                if (item.ApprovalBillStatusId == 7)
+                                {
+                                    //if we are Approving for deactivation of bill
+                                    if (bill.ApprovalBillStatusId == 6)
+                                    {
+                                        bill.ActivityBillStatusId = 5;
+
+                                    }
+                                    else if (bill.ApprovalBillStatusId == 10)
+                                    {
+                                        var ebsResponse = "";
+                                        // we are approving for bill update
+                                        bill.ActivityBillStatusId = 4;
+                                        UpdateBillRequest updateRequest = new()
+                                        {
+                                            Amount = bill.BillAmount,
+                                            Editedby = bill.ModifiedBy,
+                                            BillReference = bill.BillReferenceNo
+                                        };
+
+                                        //get payerId
+                                        var editorId = _context.Users.SingleOrDefault(u => (u.Email == bill.ModifiedBy) && u.OrganisationId == organisationId).TenantName;
+
+                                        //call procedure to push bill to EBS-RCMTe                   
+                                        updateResponses = _modelService.UpdateBillonEbs(Convert.ToInt32(editorId.Substring(2)), updateRequest);
+                                        if (updateResponses.First().Outputdata == "ok update")
+                                        {
+                                            ebsResponse = updateResponses.First().Outputdata;
+
+                                            dataResponse.StatusMessage = "Bill  Upgrade Successfully";
+
+                                        }
+                                        else
+                                        {
+                                            dataResponse.StatusMessage = "an error occurred!";
+                                            dataResponse.Data = bill.BillId;
+                                            dataResponse.Status = 200;
+                                            dataResponseList.Add(dataResponse);
+
+                                            return dataResponseList;
+                                        }
+                                    }
+                                    else if (bill.ApprovalBillStatusId == 11)
+                                    {
+                                        var harmonized = "";
+                                        if (bill.HarmonizedBillReferenceNo == null)
+                                        {
+                                            harmonized = bill.HarmonizeStore;
+                                        }
+                                        else
+                                        {
+                                            harmonized = bill.HarmonizedBillReferenceNo;
+                                        }
+                                        GenerateBillRequest billRequest = new()
+                                        {
+                                            Amount = bill.BillAmount,
+                                            PayerID = bill.Customers.PayerId,
+                                            AgencyRef = bill.Agencies.AgencyCode,
+                                            //AgencyName = bill.Organisations,
+                                            RevCode = bill.Revenues.RevenueCode,
+                                            EntryDate = DateTime.Now.ToString("yyyy-MM-dd"),
+                                            AppliedDate = bill.AppliedDate,
+                                            BillReference = bill.BillReferenceNo,
+                                            HarmonizedBillReference = harmonized,
+                                            AssessRef = bill.SerialNo,
+                                            Year = bill.Year.ToString(),
+                                            PropertyAddress = bill.Property.LocationAddress
+                                        };
+                                        // we are approving for arrears deactivation 
+                                        bill.ActivityBillStatusId = 4;
+                                        //call procedure to push bill to EBS-RCM
+                                        BillResponses = _modelService.GenerateBillReference(billRequest);
+
+                                        if (IsValidEmail(bill.Customers.Email))
+                                        {
+                                            billentity.Add(bill);
+                                            //send mail to custmer
+
+                                            MailRequest mailRequest = new MailRequest();
+                                            mailRequest.Subject = "Billing";
+                                            mailRequest.ToEmail = bill.Customers.Email;
+                                            mailRequest.Body = Getbody(billentity);
+                                            mailRequest.FirstName = bill.Customers.FirstName;
+                                            mailRequest.LastName = bill.Customers.LastName;
+                                            await _mailService.SendBillGenerationAsync(mailRequest);
+                                        };
+                                    }
+                                    if (BillResponses.First().bankreference != null)
+                                    {
+                                        dataResponse.StatusMessage = "Bill Successfully Approved";
+                                        dataResponse.Data = bill.BillId;
+                                        dataResponse.Status = 200;
+                                        //send mail to initiator
+                                        MailRequest mailRequest = new MailRequest();
+                                        mailRequest.Subject = "Approved Request";
+                                        mailRequest.ToEmail = bill.CreatedBy;
+                                        //mailRequest.FirstName is used to send the initiator's Email to the mailsender
+                                        mailRequest.FirstName = bill.CreatedBy;
+                                        mailRequest.BillReferece = "Bill Reference: " + bill.BillReferenceNo;
+                                        await _mailService.SendApprovalMailAsync(mailRequest);
+                                    }
+                                    else
+                                    {
+                                        dataResponse.StatusMessage = "an error occurred!";
+                                        dataResponse.Data = bill.BillId;
+                                        dataResponse.Status = 200;
+                                        dataResponseList.Add(dataResponse);
+
+                                        return dataResponseList;
+                                    }
+                                }
+                                else if (item.ApprovalBillStatusId == 8)
+                                {
+                                    await _repository.SaveAsync();
+                                    dataResponse.StatusMessage = "Request declined";
+                                    dataResponse.Data = bill.BillId;
+                                    dataResponse.Status = 200;
+                                    //send mail to Initiator
+                                    MailRequest mailRequest = new MailRequest();
+                                    mailRequest.Subject = "Declined Request";
+                                    mailRequest.ToEmail = bill.CreatedBy;
+
+                                    mailRequest.BillReferece = "Bill Reference: " + bill.BillReferenceNo;
+                                    await _mailService.SendDeclineMailAsync(mailRequest);
+                                }
+
+                                bill.UserId = null;
+                                bill.ApprovalBillStatusId = null;
+                                bill.BillPreApprovalId = null;
+                                bill.DateModified = DateTime.Now;
+                                bill.ModifiedBy = stepDown.ModifiedBy;
+                                await _repository.SaveAsync();
+                                var billPreApproval = await _repository.BillPreApproval.GetBillAsync(billpreprovalId, true);
+                                billPreApproval.DateModified = DateTime.Now;
+                                billPreApproval.ModifiedBy = stepDown.ModifiedBy;
+
+                                await _repository.SaveAsync();
+
+                            }
+                            else
+                            {
+
+                                dataResponse.StatusMessage = "Wrong options selected/Omitted ";
+                                dataResponse.Data = bill.BillId;
+                                dataResponse.Status = 200;
+
+                            }
+
+                        }
+                    }
+                    dataResponseList.Add(dataResponse);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("ApproveRequest" + "Payload:" + stepDown.ToString() + ex.ToString());
+            }
+
+            dataResponse.Status = 200;
+            return dataResponseList;
+        }
+       
 
         private async Task<PreviewedbillResponse> CheckIfPropertyExists(int organisationId, int agencyId, CreatePropertyBillUpload createPropertyBill)
         {
             PreviewedbillResponse response = new PreviewedbillResponse();
             Property property = new Property();
             SpaceIdentifier spaceIdentifier = new SpaceIdentifier();
-           // var wardId = await _context.Wards.Where(x => x.WardName.Equals(createPropertyBill.Ward) && x.OrganisationId.Equals(organisationId)).SingleOrDefaultAsync();
-       
-               // property.WardId = wardId.Id;
-                spaceIdentifier = await _context.SpaceIdentifiers.Where(x => x.SpaceIdentifierName.Equals(createPropertyBill.SpaceIdentifier) && x.OrganisationId.Equals(organisationId)).SingleOrDefaultAsync();
-                if (spaceIdentifier != null)
+            // var wardId = await _context.Wards.Where(x => x.WardName.Equals(createPropertyBill.Ward) && x.OrganisationId.Equals(organisationId)).SingleOrDefaultAsync();
+
+            // property.WardId = wardId.Id;
+            spaceIdentifier = await _context.SpaceIdentifiers.Where(x => x.SpaceIdentifierName.Equals(createPropertyBill.SpaceIdentifier) && x.OrganisationId.Equals(organisationId)).SingleOrDefaultAsync();
+            if (spaceIdentifier != null)
+            {
+                property.SpaceIdentifierId = spaceIdentifier.Id;
+                response.Data = property;
+                var properties = await _context.Properties.Where(x => x.AgencyId.Equals(agencyId) && x.OrganisationId.Equals(organisationId)).ToListAsync();
+                if (properties.Any())
                 {
-                    property.SpaceIdentifierId = spaceIdentifier.Id;
-                    response.Data = property;
-                    var properties = await _context.Properties.Where(x => x.AgencyId.Equals(agencyId)  && x.OrganisationId.Equals(organisationId)).ToListAsync();
-                    if (properties.Any())
+                    var address = createPropertyBill.BuildingNumber + " " + createPropertyBill.StreetName;
+                    var result = properties.Where(x => x.BuildingNo.Equals(Int32.Parse(createPropertyBill.BuildingNumber)) && x.BuildingName.Equals(createPropertyBill.BuildingName) && x.SpaceIdentifierId.Equals(spaceIdentifier.Id)).ToList();
+                    var result1 = result.Where(x => x.SpaceFloor.Equals(Int32.Parse(createPropertyBill.SpaceFloor)) && x.LocationAddress.Equals(address)).SingleOrDefault();
+                    if (result1 != null)
                     {
-                        var address = createPropertyBill.BuildingNumber + " " + createPropertyBill.StreetName;
-                        var result = properties.Where(x => x.BuildingNo.Equals(Int32.Parse(createPropertyBill.BuildingNumber)) && x.BuildingName.Equals(createPropertyBill.BuildingName) && x.SpaceIdentifierId.Equals(spaceIdentifier.Id)).ToList();
-                        var result1 = result.Where(x => x.SpaceFloor.Equals(Int32.Parse(createPropertyBill.SpaceFloor)) && x.LocationAddress.Equals(address)).SingleOrDefault();
-                        if (result1 != null)
-                        {
-                            property = result1;
+                        property = result1;
 
-                        }
                     }
+                }
 
-            
+
             }
             response.Data = property;
             //if (wardId == null)
@@ -2584,5 +3140,6 @@ namespace ACDS.RevBill.Services
                 throw new IdNotFoundException("organisation", organisationId);
         }
 
+     
     }
 }

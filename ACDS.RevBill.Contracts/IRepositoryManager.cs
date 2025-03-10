@@ -50,6 +50,8 @@ namespace ACDS.RevBill.Contracts
         IOrganisationBankRepository OrganisationBank { get; }
         IBillFormatRepository BillFormat { get; }
         IDebtRepository debtRepository { get; }
+        IArrearSettingRepository Arrear { get; }
+        IBillTemRepository BillPreApproval { get; }
 
         Task SaveAsync();
     }

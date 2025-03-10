@@ -10,8 +10,11 @@ namespace ACDS.RevBill.Service.Contracts
         Task SendOnboardingOrganisationEmailAsync(MailRequest mailRequest);
         Task SendPasswordUpdateEmailAsync(MailRequest mailRequest);
         Task GenerateAccountActivationEmailAsync(MailRequest mailRequest);
+        Task SendInitiateMailAsync(MailRequest mailRequest);
         Task SendApprovedOrganisationOnboardingRequest(MailRequest mailRequest);
         Task SendRejectedOrganisationOnboardingRequest(MailRequest mailRequest);
         Task SendBillGenerationAsync(MailRequest mailRequest);
+        Task SendApprovalMailAsync(MailRequest mailRequest);
+        Task SendDeclineMailAsync(MailRequest mailRequest);
     }
 }

@@ -19,15 +19,14 @@ namespace ACDS.RevBill.Repository
         {
             var endDate = requestParameters.EndDate == DateTime.MaxValue ? requestParameters.EndDate : requestParameters.EndDate.AddDays(1);
 
-            var bills = await FindByCondition(e => e.OrganisationId.Equals(organisationId)
-           && (e.DateCreated >= requestParameters.StartDate && e.DateCreated <= endDate)
-            , trackChanges)
+         
 
 
-                 .OrderByDescending(e => e.BillId)
-                 .SearchByPayerID(requestParameters.PayerId)
-                 .SearchByCustomerName(requestParameters.CustomerName)
-                 .SearchByAreaOffice(requestParameters.AreaOffice)
+            //  var bills = await FindByCondition(e => e.OrganisationId.Equals(organisationId) &&
+            //(e.DateCreated >= requestParameters.StartDate && e.DateCreated <= endDate), trackChanges)
+            
+            var bills = await FindByCondition(e => e.OrganisationId.Equals(organisationId) && e.ActivityBillStatusId.Equals(4) &&
+            (e.DateCreated >= requestParameters.StartDate && e.DateCreated <= endDate), trackChanges)
                  .Include(o => o.Customers)
                  .Include(o => o.Agencies)
                  .Include(o => o.Revenues)
@@ -37,12 +36,33 @@ namespace ACDS.RevBill.Repository
                  .Include(o => o.Property)
                  .Include(o => o.BusinessType)
                  .Include(o => o.BusinessSize)
+                 .OrderByDescending(e => e.BillId)
+                 .SearchByPayerID(requestParameters.PayerId)
+                 .SearchByCustomerName(requestParameters.CustomerName)
+                 .SearchByAreaOffice(requestParameters.AreaOffice)
+                 //.SearchByHarmonizedRef(requestParameters.HarmonizedRef)
+                 //.SearchByBillRef(requestParameters.BillRef)
+                // .SearchBySerialNo(requestParameters.SerialNo)
+                 .OrderByDescending(x => x.DateModified)
                  .ToListAsync();
 
             return PagedList<Billing>
                 .ToPagedList(bills, requestParameters.PageNumber, requestParameters.PageSize);
         }
-        public async Task<PagedList<Billing>> GetAgencyBillsAsync(int organisationId,int agencyId, BillingParameters requestParameters, bool trackChanges)
+        public async Task<Billing> GetBilltobeApprovedAsync(int organisationId, long billId, bool trackChanges) =>
+         await FindByCondition(c => c.OrganisationId.Equals(organisationId) && c.BillId.Equals(billId), trackChanges)
+          .Include(o => o.Customers)
+         .Include(o => o.Agencies)
+          .Include(o => o.Revenues)
+          .Include(o => o.BillStatus)
+          .Include(o => o.Frequencies)
+          .Include(o => o.BillType)
+          .Include(o => o.Property)
+          .Include(o => o.BusinessType)
+         .Include(o => o.BusinessSize)
+           .Include(o => o.Organisations)
+          .SingleOrDefaultAsync();
+        public async Task<PagedList<Billing>> GetAgencyBillsAsync(int organisationId, int agencyId, BillingParameters requestParameters, bool trackChanges)
         {
             var endDate = requestParameters.EndDate == DateTime.MaxValue ? requestParameters.EndDate : requestParameters.EndDate.AddDays(1);
 
@@ -98,7 +118,7 @@ namespace ACDS.RevBill.Repository
                 (e.DateCreated >= requestParameters.StartDate && e.DateCreated <= endDate), trackChanges)
                  .OrderBy(e => e.BillId)
                  .SearchByPayerID(requestParameters.PayerId)
-                 .SearchByPayerTypeId(requestParameters.PayerTypeId)                 
+                 .SearchByPayerTypeId(requestParameters.PayerTypeId)
                  .SearchByAreaOffice(requestParameters.AreaOffice)
                  .SearchByRevenue(requestParameters.Revenue)
                  .SearchByLcda(requestParameters.LcdaId)
@@ -117,7 +137,7 @@ namespace ACDS.RevBill.Repository
                 .ToPagedList(bills, requestParameters.PageNumber, requestParameters.PageSize);
         }
 
-        public async Task<Billing> GetBillAsync(int organisationId, long billId, bool trackChanges) =>        
+        public async Task<Billing> GetBillAsync(int organisationId, long billId, bool trackChanges) =>
             await FindByCondition(c => c.OrganisationId.Equals(organisationId) && c.BillId.Equals(billId), trackChanges)
              .Include(o => o.Customers)
              .Include(o => o.Agencies)
@@ -132,7 +152,7 @@ namespace ACDS.RevBill.Repository
 
         public async Task<IEnumerable<Billing>> GetCustomerBillbyYearAsync(int organisationId, int customerId, int propertyId, bool trackChanges)
         {
-            var bills = await FindByCondition(e => e.OrganisationId.Equals(organisationId) && e.CustomerId.Equals(customerId)&&e.PropertyId==propertyId && e.BillTypeId == 1 && e.Year == DateTime.Now.Year, trackChanges)
+            var bills = await FindByCondition(e => e.OrganisationId.Equals(organisationId) && e.CustomerId.Equals(customerId) && e.PropertyId == propertyId && e.BillTypeId == 1 && e.Year == DateTime.Now.Year, trackChanges)
                  .OrderBy(e => e.BillId)
                  .Include(o => o.Customers)
                  .Include(o => o.Agencies)
@@ -164,10 +184,10 @@ namespace ACDS.RevBill.Repository
                  .ToListAsync();
             return PagedList<Billing>
                 .ToPagedList(bills, requestParameters.PageNumber, requestParameters.PageSize);
-            
+
         }
 
-        public async Task<IEnumerable<Billing>> GetCustomerBillHarmonisedIdAsync(int organisationId, int customerId,string harmonisedbillref)
+        public async Task<IEnumerable<Billing>> GetCustomerBillHarmonisedIdAsync(int organisationId, int customerId, string harmonisedbillref)
         {
             var bills = await FindByCondition(e => e.OrganisationId.Equals(organisationId) && e.CustomerId.Equals(customerId) && e.HarmonizedBillReferenceNo.Equals(harmonisedbillref), false)
                  .OrderBy(e => e.BillId)
@@ -186,7 +206,7 @@ namespace ACDS.RevBill.Repository
         }
         public void CreatePropertyBill(int organisationId, int propertyId, int customerId, IEnumerable<Billing> billings)
         {
-            foreach(var billing in billings)
+            foreach (var billing in billings)
             {
                 billing.OrganisationId = organisationId;
                 billing.CustomerId = customerId;
@@ -195,16 +215,16 @@ namespace ACDS.RevBill.Repository
 
             CreateMultiple(billings);
         }
-       
+
         public void CreateBill(int organisationId, int propertyId, int customerId, Billing billing)
         {
-      
-                billing.OrganisationId = organisationId;
-                billing.CustomerId = customerId;
-                billing.PropertyId = propertyId;
-                billing.CreatedBy= billing.ModifiedBy;
-                billing.DateModified=billing.DateModified;
-        
+
+            billing.OrganisationId = organisationId;
+            billing.CustomerId = customerId;
+            billing.PropertyId = propertyId;
+            billing.CreatedBy = billing.ModifiedBy;
+            billing.DateModified = billing.DateModified;
+
 
             Create(billing);
         }
@@ -221,7 +241,7 @@ namespace ACDS.RevBill.Repository
         }
 
         public void CreateAutoGeneratedBill(int organisationId, int propertyId, int customerId, Billing billings)
-        {            
+        {
             billings.OrganisationId = organisationId;
             billings.CustomerId = customerId;
             billings.PropertyId = propertyId;

@@ -59,6 +59,136 @@ namespace ACDS.RevBill.Services
             }           
         }
 
+        public async Task SendInitiateMailAsync(MailRequest mailRequest)
+        {
+            var emailConfig = _context.EmailAccounts.Select(x => x).ToList();
+            foreach (var x in emailConfig)
+            {
+                SmtpServer = x.SmtpServer;
+                Port = x.Port;
+                Username = x.Username;
+                Password = x.Password;
+            }
+
+            string FilePath = Directory.GetCurrentDirectory() + "//Templates//emails//InitiateRequest.html";
+            StreamReader str = new StreamReader(FilePath);
+            string MailText = str.ReadToEnd();
+            str.Close();
+            MailText = MailText
+                .Replace("[approver]", mailRequest.ToEmail)
+                .Replace("[email]", mailRequest.FirstName)
+                .Replace("[billref]", mailRequest.BillReferece)
+                .Replace("[request]", mailRequest.Subject);
+            try
+            {
+                var email = new MimeMessage();
+                email.Sender = MailboxAddress.Parse(Username);
+                email.To.Add(MailboxAddress.Parse(mailRequest.ToEmail));
+                email.Subject = mailRequest.Subject.ToUpper() + "REQUEST";
+
+                var builder = new BodyBuilder();
+                builder.HtmlBody = MailText;
+                email.Body = builder.ToMessageBody();
+
+                using var smtp = new SmtpClient();
+                smtp.Connect(SmtpServer, Port, SecureSocketOptions.StartTls);
+                smtp.Authenticate(Username, Password);
+                await smtp.SendAsync(email);
+                smtp.Disconnect(true);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error:{ex}");
+                Console.WriteLine($"Error:{ex}");
+            }
+        }
+        public async Task SendDeclineMailAsync(MailRequest mailRequest)
+        {
+            var emailConfig = _context.EmailAccounts.Select(x => x).ToList();
+            foreach (var x in emailConfig)
+            {
+                SmtpServer = x.SmtpServer;
+                Port = x.Port;
+                Username = x.Username;
+                Password = x.Password;
+            }
+
+            string FilePath = Directory.GetCurrentDirectory() + "//Templates//emails//DeclineRequest.html";
+            StreamReader str = new StreamReader(FilePath);
+            string MailText = str.ReadToEnd();
+            str.Close();
+            MailText = MailText
+                .Replace("[approver]", mailRequest.Body)
+                .Replace("[email]", mailRequest.FirstName)
+                .Replace("[billref]", mailRequest.BillReferece)
+                .Replace("[request]", mailRequest.Subject);
+            try
+            {
+                var email = new MimeMessage();
+                email.Sender = MailboxAddress.Parse(Username);
+                email.To.Add(MailboxAddress.Parse(mailRequest.ToEmail));
+                email.Subject = (mailRequest.Subject + "Request").ToUpper();
+
+                var builder = new BodyBuilder();
+                builder.HtmlBody = MailText;
+                email.Body = builder.ToMessageBody();
+
+                using var smtp = new SmtpClient();
+                smtp.Connect(SmtpServer, Port, SecureSocketOptions.StartTls);
+                smtp.Authenticate(Username, Password);
+                await smtp.SendAsync(email);
+                smtp.Disconnect(true);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error:{ex}");
+                Console.WriteLine($"Error:{ex}");
+            }
+        }
+
+        public async Task SendApprovalMailAsync(MailRequest mailRequest)
+        {
+            var emailConfig = _context.EmailAccounts.Select(x => x).ToList();
+            foreach (var x in emailConfig)
+            {
+                SmtpServer = x.SmtpServer;
+                Port = x.Port;
+                Username = x.Username;
+                Password = x.Password;
+            }
+
+            string FilePath = Directory.GetCurrentDirectory() + "//Templates//emails//ApproveRequest.html";
+            StreamReader str = new StreamReader(FilePath);
+            string MailText = str.ReadToEnd();
+            str.Close();
+            MailText = MailText
+                .Replace("[initiator]", mailRequest.ToEmail)
+                .Replace("[billref]", mailRequest.BillReferece)
+                .Replace("[request]", mailRequest.Subject);
+            try
+            {
+                var email = new MimeMessage();
+                email.Sender = MailboxAddress.Parse(Username);
+                email.To.Add(MailboxAddress.Parse(mailRequest.ToEmail));
+                email.Subject = (mailRequest.Subject).ToUpper();
+
+                var builder = new BodyBuilder();
+                builder.HtmlBody = MailText;
+                email.Body = builder.ToMessageBody();
+
+                using var smtp = new SmtpClient();
+                smtp.Connect(SmtpServer, Port, SecureSocketOptions.StartTls);
+                smtp.Authenticate(Username, Password);
+                await smtp.SendAsync(email);
+                smtp.Disconnect(true);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error:{ex}");
+                Console.WriteLine($"Error:{ex}");
+            }
+        }
+
         public async Task SendApprovedOrganisationOnboardingRequest(MailRequest mailRequest)
         {
             string FilePath = Directory.GetCurrentDirectory() + "//Templates//emails//onboardingApproval.html";

@@ -96,8 +96,8 @@ builder.Services.AddAuthentication(options =>
         ValidateLifetime = true,
         ValidateIssuer = true,
         ValidateAudience = true,
-        ValidAudience = "https://localhost:7180/",
-        ValidIssuer = "https://localhost:7180/",
+        ValidAudience = "http://kuje.lgbills.com/backend",
+        ValidIssuer = "http://kuje.lgbills.com/backend",
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("tokenSecurityKey@1"))
     };
     options.Events = new JwtBearerEvents
@@ -162,6 +162,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 //AuditTrail configuration to use sql server
+var strConnectionString = config.GetConnectionString("sqlConnection").ToString();
 Configuration.Setup()
           .UseSqlServer(_ => _
              .ConnectionString(config.GetConnectionString("sqlConnection"))

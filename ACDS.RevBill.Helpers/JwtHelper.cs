@@ -8,8 +8,8 @@ namespace ACDS.RevBill.Helpers
 {
     public class JwtHelper
     {
-        public const string ISSUER = "https://localhost:7180/";
-        public const string AUDIENCE = "https://localhost:7180/";
+        public const string ISSUER = "http://kuje.lgbills.com/backend";
+        public const string AUDIENCE = "http://kuje.lgbills.com/backend";
         public const string SECURITY_KEY = "tokenSecurityKey@1";
 
         public static TokenValidationParameters GetTokenParameters()

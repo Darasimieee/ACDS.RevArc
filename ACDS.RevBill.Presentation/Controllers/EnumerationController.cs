@@ -882,7 +882,7 @@ namespace ACDS.RevBill.Presentation.Controllers
 
             if (!ModelState.IsValid)
                 return UnprocessableEntity(ModelState);
-
+           
             var enumeration = await _service.EnumerationService.CreatePIDWithBioData(customer);
             _loggerManager.LogInfo($"ending customer eumeration for customer {customer.Email}");
             return Ok(enumeration);

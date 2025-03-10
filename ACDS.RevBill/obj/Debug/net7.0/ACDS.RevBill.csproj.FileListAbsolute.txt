@@ -1,0 +1,501 @@
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\nlog.config
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\appsettings.json
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.exe
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.deps.json
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.runtimeconfig.json
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.pdb
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Audit.NET.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Audit.NET.SqlServer.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Audit.WebApi.Core.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\AutoMapper.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Azure.Core.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Azure.Identity.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\BCrypt.Net-Next.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\BouncyCastle.Cryptography.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\CsvHelper.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Enums.NET.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\EPPlus.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\EPPlus.Interfaces.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\EPPlus.System.Drawing.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Humanizer.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\MailKit.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\MathNet.Numerics.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.Versioning.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Data.SqlClient.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Binder.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Logging.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Primitives.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Identity.Client.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.IO.RecyclableMemoryStream.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.OpenApi.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.SqlServer.Server.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\MimeKit.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Mono.TextTemplating.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\NETCore.MailKit.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Newtonsoft.Json.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\NLog.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\NLog.Database.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\NLog.Extensions.Logging.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\NPOI.Core.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\NPOI.OOXML.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\NPOI.OpenXml4Net.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\NPOI.OpenXmlFormats.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\PasswordGenerator.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\BouncyCastle.Crypto.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\QRCoder.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\RestSharp.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.AspNetCore.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Enrichers.Environment.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Exceptions.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Extensions.Hosting.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Extensions.Logging.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Formatting.Compact.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Settings.Configuration.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Sinks.Console.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Sinks.Debug.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Sinks.File.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\ICSharpCode.SharpZipLib.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\SixLabors.Fonts.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\SixLabors.ImageSharp.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\SkiaSharp.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\SkiaSharp.QrCode.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.CodeDom.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Configuration.ConfigurationManager.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Diagnostics.DiagnosticSource.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Drawing.Common.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Memory.Data.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Runtime.Caching.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Security.Cryptography.Pkcs.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Security.Cryptography.ProtectedData.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Security.Permissions.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Text.Encodings.Web.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Text.Json.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Windows.Extensions.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\osx\native\libSkiaSharp.dylib
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win-arm64\native\libSkiaSharp.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win-x64\native\libSkiaSharp.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win-x86\native\libSkiaSharp.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Security.Cryptography.Pkcs.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\browser\lib\net7.0\System.Text.Encodings.Web.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Contracts.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Entities.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Helpers.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Presentation.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Repository.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Service.Contracts.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Services.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Shared.dll
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Services.pdb
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Repository.pdb
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Shared.pdb
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Helpers.pdb
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Contracts.pdb
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Entities.pdb
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Presentation.pdb
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Presentation.xml
+D:\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Service.Contracts.pdb
+D:\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.csproj.AssemblyReference.cache
+D:\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.GeneratedMSBuildEditorConfig.editorconfig
+D:\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.AssemblyInfoInputs.cache
+D:\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.AssemblyInfo.cs
+D:\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.csproj.CoreCompileInputs.cache
+D:\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.MvcApplicationPartsAssemblyInfo.cs
+D:\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.MvcApplicationPartsAssemblyInfo.cache
+D:\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.sourcelink.json
+D:\RevAc\ACDS.RevBill\obj\Debug\net7.0\staticwebassets.build.json
+D:\RevAc\ACDS.RevBill\obj\Debug\net7.0\staticwebassets.development.json
+D:\RevAc\ACDS.RevBill\obj\Debug\net7.0\staticwebassets\msbuild.ACDS.RevBill.Microsoft.AspNetCore.StaticWebAssets.props
+D:\RevAc\ACDS.RevBill\obj\Debug\net7.0\staticwebassets\msbuild.build.ACDS.RevBill.props
+D:\RevAc\ACDS.RevBill\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.ACDS.RevBill.props
+D:\RevAc\ACDS.RevBill\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.ACDS.RevBill.props
+D:\RevAc\ACDS.RevBill\obj\Debug\net7.0\staticwebassets.pack.json
+D:\RevAc\ACDS.RevBill\obj\Debug\net7.0\scopedcss\bundle\ACDS.RevBill.styles.css
+D:\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.Rev.9861261D.Up2Date
+D:\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.dll
+D:\RevAc\ACDS.RevBill\obj\Debug\net7.0\refint\ACDS.RevBill.dll
+D:\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.pdb
+D:\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.genruntimeconfig.cache
+D:\RevAc\ACDS.RevBill\obj\Debug\net7.0\ref\ACDS.RevBill.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.csproj.AssemblyReference.cache
+D:\New folder (3)\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.GeneratedMSBuildEditorConfig.editorconfig
+D:\New folder (3)\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.AssemblyInfoInputs.cache
+D:\New folder (3)\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.AssemblyInfo.cs
+D:\New folder (3)\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.csproj.CoreCompileInputs.cache
+D:\New folder (3)\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.MvcApplicationPartsAssemblyInfo.cache
+D:\New folder (3)\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.sourcelink.json
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\nlog.config
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\appsettings.json
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.exe
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.deps.json
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.runtimeconfig.json
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.pdb
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Audit.NET.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Audit.NET.SqlServer.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Audit.WebApi.Core.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\AutoMapper.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Azure.Core.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Azure.Identity.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\BCrypt.Net-Next.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\BouncyCastle.Cryptography.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\CsvHelper.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Enums.NET.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\EPPlus.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\EPPlus.Interfaces.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\EPPlus.System.Drawing.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Humanizer.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\MailKit.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\MathNet.Numerics.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.Versioning.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Data.SqlClient.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Binder.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Logging.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Primitives.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Identity.Client.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.IO.RecyclableMemoryStream.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.OpenApi.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.SqlServer.Server.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\MimeKit.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Mono.TextTemplating.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\NETCore.MailKit.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Newtonsoft.Json.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\NLog.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\NLog.Database.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\NLog.Extensions.Logging.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\NPOI.Core.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\NPOI.OOXML.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\NPOI.OpenXml4Net.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\NPOI.OpenXmlFormats.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\PasswordGenerator.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\BouncyCastle.Crypto.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\QRCoder.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\RestSharp.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.AspNetCore.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Enrichers.Environment.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Exceptions.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Extensions.Hosting.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Extensions.Logging.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Formatting.Compact.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Settings.Configuration.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Sinks.Console.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Sinks.Debug.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Sinks.File.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\ICSharpCode.SharpZipLib.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\SixLabors.Fonts.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\SixLabors.ImageSharp.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\SkiaSharp.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\SkiaSharp.QrCode.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.CodeDom.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Configuration.ConfigurationManager.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Diagnostics.DiagnosticSource.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Drawing.Common.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Memory.Data.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Runtime.Caching.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Security.Cryptography.Pkcs.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Security.Cryptography.ProtectedData.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Security.Permissions.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Text.Encodings.Web.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Text.Json.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Windows.Extensions.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\osx\native\libSkiaSharp.dylib
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win-arm64\native\libSkiaSharp.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win-x64\native\libSkiaSharp.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win-x86\native\libSkiaSharp.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Security.Cryptography.Pkcs.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\browser\lib\net7.0\System.Text.Encodings.Web.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Contracts.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Entities.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Helpers.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Presentation.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Repository.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Service.Contracts.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Services.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Shared.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Services.pdb
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Repository.pdb
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Shared.pdb
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Helpers.pdb
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Contracts.pdb
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Entities.pdb
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Presentation.pdb
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Presentation.xml
+D:\New folder (3)\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Service.Contracts.pdb
+D:\New folder (3)\RevAc\ACDS.RevBill\obj\Debug\net7.0\staticwebassets.build.json
+D:\New folder (3)\RevAc\ACDS.RevBill\obj\Debug\net7.0\staticwebassets.development.json
+D:\New folder (3)\RevAc\ACDS.RevBill\obj\Debug\net7.0\staticwebassets\msbuild.ACDS.RevBill.Microsoft.AspNetCore.StaticWebAssets.props
+D:\New folder (3)\RevAc\ACDS.RevBill\obj\Debug\net7.0\staticwebassets\msbuild.build.ACDS.RevBill.props
+D:\New folder (3)\RevAc\ACDS.RevBill\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.ACDS.RevBill.props
+D:\New folder (3)\RevAc\ACDS.RevBill\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.ACDS.RevBill.props
+D:\New folder (3)\RevAc\ACDS.RevBill\obj\Debug\net7.0\staticwebassets.pack.json
+D:\New folder (3)\RevAc\ACDS.RevBill\obj\Debug\net7.0\scopedcss\bundle\ACDS.RevBill.styles.css
+D:\New folder (3)\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.Rev.9861261D.Up2Date
+D:\New folder (3)\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\obj\Debug\net7.0\refint\ACDS.RevBill.dll
+D:\New folder (3)\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.pdb
+D:\New folder (3)\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.genruntimeconfig.cache
+D:\New folder (3)\RevAc\ACDS.RevBill\obj\Debug\net7.0\ref\ACDS.RevBill.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\nlog.config
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\appsettings.json
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.staticwebassets.endpoints.json
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.exe
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.deps.json
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.runtimeconfig.json
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.pdb
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Audit.NET.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Audit.NET.SqlServer.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Audit.WebApi.Core.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\AutoMapper.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Azure.Core.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Azure.Identity.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\BCrypt.Net-Next.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\BouncyCastle.Cryptography.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\CsvHelper.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Enums.NET.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\EPPlus.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\EPPlus.Interfaces.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\EPPlus.System.Drawing.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Humanizer.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\MailKit.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\MathNet.Numerics.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.Versioning.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Data.SqlClient.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Logging.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Extensions.Primitives.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Identity.Client.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.IO.RecyclableMemoryStream.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.OpenApi.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.SqlServer.Server.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\MimeKit.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\NETCore.MailKit.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\NLog.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\NLog.Database.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\NLog.Extensions.Logging.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\NPOI.Core.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\NPOI.OOXML.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\NPOI.OpenXml4Net.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\NPOI.OpenXmlFormats.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\PasswordGenerator.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\BouncyCastle.Crypto.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\QRCoder.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\RestSharp.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.AspNetCore.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Enrichers.Environment.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Exceptions.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Extensions.Hosting.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Extensions.Logging.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Formatting.Compact.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Settings.Configuration.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Sinks.Console.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Sinks.Debug.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Serilog.Sinks.File.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\ICSharpCode.SharpZipLib.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\SixLabors.Fonts.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\SixLabors.ImageSharp.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\SkiaSharp.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\SkiaSharp.QrCode.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.CodeDom.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Configuration.ConfigurationManager.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Diagnostics.DiagnosticSource.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Drawing.Common.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Memory.Data.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Runtime.Caching.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Security.Cryptography.Pkcs.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Security.Cryptography.ProtectedData.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Security.Permissions.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Text.Encodings.Web.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Text.Json.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\System.Windows.Extensions.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\osx\native\libSkiaSharp.dylib
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win-arm64\native\libSkiaSharp.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win-x64\native\libSkiaSharp.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win-x86\native\libSkiaSharp.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Security.Cryptography.Pkcs.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\browser\lib\net7.0\System.Text.Encodings.Web.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Contracts.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Entities.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Helpers.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Presentation.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Repository.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Service.Contracts.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Services.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Shared.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Services.pdb
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Repository.pdb
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Shared.pdb
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Helpers.pdb
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Contracts.pdb
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Entities.pdb
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Presentation.pdb
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Presentation.xml
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\bin\Debug\net7.0\ACDS.RevBill.Service.Contracts.pdb
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.csproj.AssemblyReference.cache
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.GeneratedMSBuildEditorConfig.editorconfig
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.AssemblyInfoInputs.cache
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.AssemblyInfo.cs
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.csproj.CoreCompileInputs.cache
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.MvcApplicationPartsAssemblyInfo.cs
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.MvcApplicationPartsAssemblyInfo.cache
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.sourcelink.json
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\obj\Debug\net7.0\scopedcss\bundle\ACDS.RevBill.styles.css
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\obj\Debug\net7.0\staticwebassets.build.json
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\obj\Debug\net7.0\staticwebassets.development.json
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\obj\Debug\net7.0\staticwebassets.build.endpoints.json
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\obj\Debug\net7.0\staticwebassets\msbuild.ACDS.RevBill.Microsoft.AspNetCore.StaticWebAssets.props
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\obj\Debug\net7.0\staticwebassets\msbuild.ACDS.RevBill.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\obj\Debug\net7.0\staticwebassets\msbuild.build.ACDS.RevBill.props
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.ACDS.RevBill.props
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.ACDS.RevBill.props
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\obj\Debug\net7.0\staticwebassets.pack.json
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\obj\Debug\net7.0\staticwebassets.upToDateCheck.txt
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.Rev.9861261D.Up2Date
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\obj\Debug\net7.0\refint\ACDS.RevBill.dll
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.pdb
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\obj\Debug\net7.0\ACDS.RevBill.genruntimeconfig.cache
+C:\RevAc\RevAc\RevAc\ACDS.RevBill\obj\Debug\net7.0\ref\ACDS.RevBill.dll

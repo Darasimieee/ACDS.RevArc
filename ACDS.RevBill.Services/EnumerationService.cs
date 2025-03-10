@@ -915,9 +915,9 @@ namespace ACDS.RevBill.Services
             _logger.LogInfo("I got to interface");
             var pidEntity = _mapper.Map<CustomerEnumerationDto>(customer);
             var pidCreationUrl = $"{_pidConfig.BASE_URL}/FCTRS/Interface/pidcreation";
+            //var pidCreationHash = EncryptionUtility.CreateSHA512(_pidConfig.KEY + pidEntity.Type + pidEntity.Phone + pidEntity.FirstName + pidEntity.Address +  _pidConfig.STATE);
             var pidCreationHash = EncryptionUtility.CreateSHA512(_pidConfig.KEY + pidEntity.Phone + pidEntity.Email + pidEntity.Address + _pidConfig.STATE);
-
-
+            _loggerManager.LogInfo($"Computed Hash ::: {pidCreationHash}");
             _loggerManager.LogInfo($"mapping the hash, state id and clientid for customer {customer.Email}");
             _logger.LogInfo("I got to hash");
             //map hash, state and client id
@@ -932,10 +932,13 @@ namespace ACDS.RevBill.Services
             var client = new HttpClient();
             var request = new HttpRequestMessage(HttpMethod.Post, pidCreationUrl);
 
+           // customer.UserPID= _pidConfig.USER_PID;
             _loggerManager.LogInfo($"serialize payload for customer {customer.Email}");
             _logger.LogInfo("I got to payload");
             //serialize payload 
             var payload = JsonConvert.SerializeObject(pidEntity);
+            _loggerManager.LogInfo($"Payload ::: {payload}");
+
             var content = new StringContent(payload, null, "application/json");
             request.Content = content;
 
@@ -944,6 +947,7 @@ namespace ACDS.RevBill.Services
             _logger.LogInfo("I got to response for customer");
             var response = await client.SendAsync(request);
             var responseContent = await response.Content.ReadAsStringAsync(); // here you can read response as string
+            _loggerManager.LogInfo($" Response ::: {responseContent}");
 
             //deserialise response
             _loggerManager.LogInfo($"return output for customer {customer.Email}");
@@ -977,7 +981,7 @@ namespace ACDS.RevBill.Services
         {
             var pidEntity = _mapper.Map<CustomerEnumerationBVNDto>(customer);
 
-            var pidCreationUrl = $"{_pidConfig.BASE_URL}/Interface/CreatePidBvn";
+            var pidCreationUrl = $"{_pidConfig.BASE_URL}/FCTRS/Interface/CreatePidBvn";
             var pidCreationHash = EncryptionUtility.CreateSHA512(_pidConfig.KEY + customer.Type + customer.PhoneNumber + customer.Address + _pidConfig.STATE);
 
             //map hash, state and client id
@@ -1031,7 +1035,7 @@ namespace ACDS.RevBill.Services
             }
             var pidEntity = _mapper.Map<CustomerEnumerationNINDto>(customer);
 
-            var pidCreationUrl = $"{_pidConfig.BASE_URL}/FCTRS/Interface/CreatePidNinPhoneO";
+            var pidCreationUrl = $"{_pidConfig.BASE_URL}/FCTRS/Interface/CreatePidNinPhone";
             var pidCreationHash = EncryptionUtility.CreateSHA512(_pidConfig.KEY + customer.Type + customer.PhoneNumber + customer.Address + _pidConfig.STATE);
 
             //map hash, state and client id

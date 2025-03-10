@@ -53,6 +53,12 @@ namespace ACDS.RevBill
             CreateMap<RoleModules, CreateRoleModuleDto>();
             CreateMap<UpdateRoleModuleDto, RoleModules>();
 
+
+            //For Arrears mapping
+            CreateMap<Arrears, GetArrearsDTO>();
+            CreateMap<CreateArrearsDTO, Arrears>();
+            CreateMap<UpdateArrearsdto, Arrears>();
+
             //For RoleModuleMenu mapping
             CreateMap<RoleModuleMenus, GetRoleModMenuDto>();
             CreateMap<CreateRoleModMenuDto, RoleModuleMenus>();
@@ -197,30 +203,46 @@ namespace ACDS.RevBill
 
             //Billing
             CreateMap<Frequencies, GetFrequencyDto>();
-            CreateMap<IEnumerable<CreatePropertyBill>,CreatePropertyBillDto>();
+            CreateMap<IEnumerable<CreatePropertyBill>, CreatePropertyBillDto>();
             CreateMap<CreatePropertyBillDto, Billing>();
+            CreateMap<CreateNonPropertyBillDto, Billing>();
+            CreateMap<Billing, CreateNonPropertyBillDto>();
+            CreateMap<BillPreApproval, Billing>();
+            CreateMap<Billing, BillPreApproval>();
+            CreateMap<StepDownBillDto, Billing>();
+            CreateMap<Billing, StepDownBillDto>();
+            CreateMap<ApproveRequestDTO, Billing>();
+            CreateMap<CreatePropertyBillDto, BillExistDto>();
+            CreateMap<Billing, BillExistDto>();
             CreateMap<IEnumerable<CreatePropertyBillUpload>, CreatePropertyBillDto>();
             CreateMap<CreatePropertyBillDto, GetBillDto>();
-            CreateMap<CreateNonPropertyBillDto, Billing>();
             CreateMap<CreateBacklogBillDto, Billing>();
             CreateMap<Billing, GetBillDto>();
+            CreateMap<Billing, GetGroupBillDto>();
             CreateMap<Billing, GetDebtReportDto>();
             CreateMap<BillStatus, BillStatusDto>();
             CreateMap<BillType, BillTypeDto>();
             CreateMap<IEnumerable<CreatePropertyBillDto>, Billing>();
             CreateMap<IEnumerable<CreateBulkNonProperty>, Billing>();
+            CreateMap<Billing, IEnumerable<CreateBulkNonProperty>>();
             CreateMap<IEnumerable<CreateBulkBacklogBill>, Billing>();
             CreateMap<IEnumerable<CreateAutoBill>, Billing>();
             CreateMap<CreateBulkPropertyBill, Billing>();
             CreateMap<CreateBulkNonProperty, Billing>();
+            CreateMap<Billing, CreateBulkNonProperty>();
             CreateMap<CreateBulkBillingDto, BulkBillingDto>();
             CreateMap<CreateAutoBillDto, Billing>();
             CreateMap<BillFormat, GetBillFormat>();
             CreateMap<CreateBillFormat, BillFormat>();
             CreateMap<UpdateBillFormat, BillFormat>();
             CreateMap<UpdateBilldto, Billing>();
+            CreateMap<Billing, UpdateBilldto>();
             CreateMap<UpdateBilldto, Updatedto>();
-            CreateMap<Updatedto, Billing>();    
+            CreateMap<Updatedto, Billing>();
+            //CreateMap<Billing, NonPropertyBillDto>();
+            //CreateMap<NonPropertyBillDto, Billing>();
+            CreateMap<Billing, Updatedto>();
+
 
             //Payment
             CreateMap<Payment, GetPaymentDto>();

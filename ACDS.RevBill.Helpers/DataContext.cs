@@ -34,8 +34,8 @@ namespace ACDS.RevBill.Helpers
                 var configuration = new ConfigurationBuilder()
                   .AddJsonFile("appsettings.json", false)
                   .Build();
-
-                options.UseSqlServer(configuration.GetConnectionString("sqlConnection"));
+                _connectionString = configuration.GetConnectionString("sqlConnection");
+                options.UseSqlServer(_connectionString);
             }
         }
 
@@ -82,6 +82,7 @@ namespace ACDS.RevBill.Helpers
         public DbSet<BusinessType>? BusinessTypes { get; set; }
         public DbSet<BusinessSize>? BusinessSizes { get; set; }
         public DbSet<Billing>? Billing { get; set; }
+        public DbSet<BillPreApproval>? BillPreApproval { get; set; }
         public DbSet<CustomerProperty>? CustomerProperties { get; set; }
         public DbSet<Tenancy>? Tenancy { get; set; }
         public DbSet<Payment>? Payments { get; set; }
@@ -93,5 +94,7 @@ namespace ACDS.RevBill.Helpers
         //public DbSet<Ward>? Wards { get; set; }
         public DbSet<Streets>? Streets { get; set; }
         public DbSet<Department>? Departments { get; set; }
+        public DbSet<Arrears>? Arrears { get; set; }
+        public DbSet<OrganisationCustomers>? OrganisationCustomers { get; set; }
     }
 }

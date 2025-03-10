@@ -8,6 +8,7 @@ namespace ACDS.RevBill.Entities.Email
         public string? ToEmail { get; set; }
         public string? Subject { get; set; }
         public string? Body { get; set; }
+        public string? BillReferece { get; set; }
         public string? OrganisationName { get; set; }
         public string? Password { get; set; }
         public string? OTP { get; set; }

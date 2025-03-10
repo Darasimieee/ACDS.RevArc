@@ -13,13 +13,14 @@ namespace ACDS.RevBill.Service.Contracts
     public interface IBillingService
     {
         Task<(IEnumerable<GetBillDto> bills, MetaData metaData)> GetAllBillsAsync(int organisationId, BillingParameters requestParameters, bool trackChanges);
+        //Task<(IEnumerable<GetGroupBillDto> bills, MetaData metaData)> GetAllGroupBillsAsync(int organisationId, DebtReportParameters requestParameters, bool trackChanges);
         Task<(IEnumerable<GetBillDto> bills, MetaData metaData)> GetPayerBillsAsync(int organisationId, int agencyId, string payerId, BillingParameters requestParameters, bool trackChanges);
         Task<(IEnumerable<GetBillDto> bills, MetaData metaData)> GetAgencyBillsAsync(int organisationId, int agencyId, BillingParameters requestParameters, bool trackChanges);
         Task<(IEnumerable<GetBillDto> bills, MetaData metaData)> FilterBillstobePaid(int organisationId, DebtReportParameters requestParameters, bool trackChanges);
         Task<GetBillDto> GetBillByBillIdAsync(int organisationId, int billId, bool trackChanges);
         Task<(IEnumerable<GetBillDto> bills, MetaData metaData)> GetBillByCustomerIdAsync(int organisationId, int customerId, DefaultParameters requestParameters, bool trackChanges);
         Task<IEnumerable<GetBillDto>> BillByCustomerIdHarmonisedIdAsync(int organisationId, int customerId, string harmonisedbillref);
-        Task<Response> CreatePropertyBillAsync(int organisationId, int propertyId, int customerId, CreateBulkPropertyBill createBillDto, bool trackChanges);
+        Task<List<Response>> CreatePropertyBillAsync(int organisationId, int propertyId, int customerId, CreateBulkPropertyBill createBillDto, bool trackChanges);
         Task<IEnumerable<GetBillDto>> CreateNonPropertyBillAsync(int organisationId, int customerId, CreateBulkNonProperty createBillDto, bool trackChanges);
         Task<IEnumerable<GetBillDto>> BackLogBill(int organisationId, int propertyId, int customerId, CreateBulkBacklogBill createBillDto, bool trackChanges);
         Task<IEnumerable<GetBillDto>> AutoBillGeneration(int organisationId, CreateAutoBill createBillDto, bool trackChanges);
@@ -35,18 +36,23 @@ namespace ACDS.RevBill.Service.Contracts
         Task<DebtReportDto> TotalBilltobePaidThisYear(int organisationId);
         Task<List<AgencyBillingSummaryDto>> NoOfBillsByAreaOffice(int organisationId);
         Task<IEnumerable<GetFrequencyDto>> GetAllFrequency(bool trackChanges);
+        Task<Response> CreateArrearSetting(int organisationId, CreateArrearsDTO createArrears, bool trackChanges);
+        Task<(IEnumerable<GetArrearsDTO> arrears, MetaData metaData)> GetArrearsSetting(int organisationId, RoleParameters requestParameters, bool trackChanges);
+        Task<List<Response>> ApproveRequest(int organisationId, ApproveRequestDTO stepDown);
+        Task<Response> UpdateArrearSettings(int arrearId, UpdateArrearsdto updatearrears, bool trackChanges);
         Task<List<BillingReportDto>> GenerateBillReport(int organisationId, long billId);
         Task<List<BillingReportDto>> GenerateBillReport(int organisationId, string harmonized);
         Task<ValidateBillResponseDto> ValidateBill(ValidateBillRequest1Dto validateBill);
         Response ValidateHarmonizedBillReferences(HarmonizedBillReferenceRequestDto harmonizedBill);
         Task<Response> StepDownBill(int organisationId, int billId, StepDownBillDto stepDown);
+        Task<Response> InitiateStepDownBill(int organisationId, int billId, StepDownBillDto stepDown);
         Task<string> CountOfSteppedDownBills(int organisationId, int billId);
         Task<Response> CreateBillFormatAsync(int organisationId, CreateBillFormat createBillFormat, bool trackChanges);
         Task<Response> UpdateBillFormatAsync(int organisationId, int billFormatId, UpdateBillFormat updateBillFormat, bool trackChanges);
-        Task<Response> UpdateBillAsync(int organisationId, int propertyId, int customerId,UpdatePropertyBill updateBill, bool trackChanges);
+        Task<Response> UpdateBillAsync(int organisationId, int propertyId, int customerId, UpdatePropertyBill updateBill, bool trackChanges);
         Task<(IEnumerable<GetBillFormat> bills, MetaData metaData)> GetAllBillFormatsAsync(int organisationId, DefaultParameters requestParameters, bool trackChanges);
         Task<GetBillFormat> GetBillFormatAsync(int organisationId, int billFormatId, bool trackChanges);
-        Task<Response> UploadBillsAsync(int organisationId,string creator, DefaultParameters requestParameters, IFormFile file);
-        Task<List<PreviewedbillResponse>> BulkPreviewedBilling(int organisationId,string createdby, IEnumerable<CreatePropertyBillUpload> previewedbill, bool trackChanges);
+        Task<Response> UploadBillsAsync(int organisationId, string creator, DefaultParameters requestParameters, IFormFile file);
+        Task<List<PreviewedbillResponse>> BulkPreviewedBilling(int organisationId, string createdby, IEnumerable<CreatePropertyBillUpload> previewedbill, bool trackChanges);
     }
 }

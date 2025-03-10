@@ -41,6 +41,9 @@ namespace ACDS.RevBill.Shared.DataTransferObjects.Enumeration
         [Required(ErrorMessage = "Address is a required field.")]
         public string? Address { get; set; }
 
+       
+        //public string? UserPID { get; set; }
+
         public string? State { get; set; }
     }
 }

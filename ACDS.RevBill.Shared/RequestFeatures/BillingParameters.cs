@@ -1,8 +1,8 @@
 ﻿using System;
 namespace ACDS.RevBill.Shared.RequestFeatures
 {
-	public class BillingParameters : RequestParameters
-	{
+    public class BillingParameters : RequestParameters
+    {
         public string? PayerId { get; set; }
         public string? CustomerName { get; set; }
         public string? AreaOffice { get; set; }

@@ -9,5 +9,6 @@ namespace ACDS.RevBill.Entities.Models
         public string? STATE { get; set; }
         public string? TELLER_ID { get; set; }
         public string? REV_PAY_URL { get; set; }
+        //public string? USER_PID { get; set; }
     }
 }
